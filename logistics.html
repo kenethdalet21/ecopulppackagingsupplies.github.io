@@ -1,0 +1,631 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Logistics & Delivery - Ecopulp Packaging Supplies</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        .logistics-section {
+            padding: 60px 0;
+        }
+        .logistics-hero {
+            background: linear-gradient(135deg, #1B5E20, #2E7D32);
+            color: white;
+            padding: 80px 0;
+            text-align: center;
+        }
+        .logistics-hero h1 {
+            font-size: 3rem;
+            margin-bottom: 20px;
+        }
+        .logistics-hero p {
+            font-size: 1.2rem;
+            opacity: 0.9;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        .tracking-section {
+            background: white;
+            padding: 40px;
+            border-radius: 16px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+            margin-top: -50px;
+            position: relative;
+            z-index: 10;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        .tracking-form {
+            display: flex;
+            gap: 15px;
+        }
+        .tracking-form input {
+            flex: 1;
+            padding: 18px 20px;
+            border: 2px solid #E0E0E0;
+            border-radius: 8px;
+            font-size: 1rem;
+        }
+        .tracking-form input:focus {
+            border-color: #2E7D32;
+            outline: none;
+        }
+        .tracking-form button {
+            padding: 18px 40px;
+        }
+        .delivery-zones {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+            margin-top: 50px;
+        }
+        .zone-card {
+            background: white;
+            border-radius: 16px;
+            padding: 40px 30px;
+            text-align: center;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            border: 2px solid transparent;
+            transition: all 0.3s ease;
+        }
+        .zone-card:hover {
+            border-color: #2E7D32;
+            transform: translateY(-5px);
+        }
+        .zone-icon {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, #4CAF50, #2E7D32);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+        }
+        .zone-icon i {
+            font-size: 2rem;
+            color: white;
+        }
+        .zone-card h3 {
+            font-size: 1.3rem;
+            margin-bottom: 10px;
+            color: #333;
+        }
+        .zone-card .delivery-time {
+            color: #2E7D32;
+            font-weight: 600;
+            font-size: 1.1rem;
+            margin-bottom: 15px;
+        }
+        .zone-card ul {
+            text-align: left;
+            color: #666;
+        }
+        .zone-card ul li {
+            padding: 5px 0;
+            padding-left: 20px;
+            position: relative;
+        }
+        .zone-card ul li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: #2E7D32;
+        }
+        .shipping-rates {
+            background: #F5F5F5;
+            padding: 60px 0;
+        }
+        .rates-table {
+            background: white;
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+        .rates-table table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        .rates-table th {
+            background: #2E7D32;
+            color: white;
+            padding: 20px;
+            text-align: left;
+        }
+        .rates-table td {
+            padding: 18px 20px;
+            border-bottom: 1px solid #E0E0E0;
+        }
+        .rates-table tr:hover {
+            background: #F5F5F5;
+        }
+        .highlight-free {
+            color: #2E7D32;
+            font-weight: 600;
+        }
+        .process-flow {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin: 50px 0;
+            position: relative;
+        }
+        .process-flow::before {
+            content: '';
+            position: absolute;
+            top: 40px;
+            left: 10%;
+            right: 10%;
+            height: 3px;
+            background: #E0E0E0;
+        }
+        .process-step {
+            text-align: center;
+            position: relative;
+            z-index: 1;
+            flex: 1;
+        }
+        .process-step-icon {
+            width: 80px;
+            height: 80px;
+            background: white;
+            border: 3px solid #2E7D32;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 15px;
+        }
+        .process-step-icon i {
+            font-size: 1.8rem;
+            color: #2E7D32;
+        }
+        .process-step h4 {
+            font-size: 1rem;
+            margin-bottom: 5px;
+        }
+        .process-step p {
+            color: #666;
+            font-size: 0.85rem;
+        }
+        .partners-section {
+            padding: 60px 0;
+            text-align: center;
+        }
+        .partners-grid {
+            display: flex;
+            justify-content: center;
+            gap: 50px;
+            flex-wrap: wrap;
+            margin-top: 30px;
+        }
+        .partner-logo {
+            width: 150px;
+            height: 80px;
+            background: #F5F5F5;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 600;
+            color: #666;
+        }
+        @media (max-width: 768px) {
+            .delivery-zones {
+                grid-template-columns: 1fr;
+            }
+            .tracking-form {
+                flex-direction: column;
+            }
+            .process-flow {
+                flex-direction: column;
+                gap: 30px;
+            }
+            .process-flow::before {
+                display: none;
+            }
+            .logistics-hero h1 {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Top Bar -->
+    <div class="top-bar">
+        <div class="container">
+            <div class="top-bar-left">
+                <span><i class="fas fa-phone"></i> +63 912 345 6789</span>
+                <span><i class="fas fa-envelope"></i> info@limtray.com</span>
+            </div>
+            <div class="top-bar-right">
+                <a href="login.html"><i class="fas fa-user"></i> Sign In</a>
+                <a href="register.html" class="btn-join">Join Free</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <div class="logo">
+                <a href="index.html">
+                    <div class="logo-text">
+                        <span class="logo-icon"><i class="fas fa-egg"></i></span>
+                        <span class="logo-name">LimTray</span>
+                    </div>
+                </a>
+            </div>
+            <nav class="main-nav">
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="products.html">Products</a></li>
+                    <li><a href="orders.html">Order Online</a></li>
+                    <li><a href="logistics.html" class="active">Logistics & Delivery</a></li>
+                    <li><a href="about.html">About Us</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </nav>
+            <div class="header-actions">
+                <a href="cart.html" class="cart-icon"><i class="fas fa-shopping-cart"></i><span class="cart-count">0</span></a>
+                <button class="mobile-menu-btn" title="Open mobile menu"><i class="fas fa-bars"></i></button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Logistics Hero -->
+    <div class="logistics-hero">
+        <div class="container">
+            <h1><i class="fas fa-shipping-fast"></i> Logistics & Delivery</h1>
+            <p>Fast, reliable, and trackable delivery services to ensure your egg trays arrive safely and on time</p>
+        </div>
+    </div>
+
+    <!-- Tracking Section -->
+    <section class="logistics-section">
+        <div class="container">
+            <div class="tracking-section">
+                <h2 class="track-title"><i class="fas fa-search-location track-title-icon"></i> Track Your Order</h2>
+                <p class="track-desc">Enter your order number to track your shipment in real-time</p>
+                <form class="tracking-form" onsubmit="trackOrder(event)">
+                    <input type="text" id="trackingNumber" placeholder="Enter Order Number (e.g., LT-12345678)" required>
+                    <button type="submit" class="btn btn-primary"><i class="fas fa-search"></i> Track</button>
+                </form>
+                <div id="trackingResult" class="track-result"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Delivery Process -->
+    <section class="logistics-section logistics-section-bg">
+        <div class="container">
+            <h2 class="section-title">Our Delivery Process</h2>
+            <p class="section-subtitle">From our factory to your doorstep</p>
+            
+            <div class="process-flow">
+                <div class="process-step">
+                    <div class="process-step-icon">
+                        <i class="fas fa-clipboard-check"></i>
+                    </div>
+                    <h4>Order Confirmed</h4>
+                    <p>Payment verified</p>
+                </div>
+                <div class="process-step">
+                    <div class="process-step-icon">
+                        <i class="fas fa-cogs"></i>
+                    </div>
+                    <h4>Processing</h4>
+                    <p>Preparing your order</p>
+                </div>
+                <div class="process-step">
+                    <div class="process-step-icon">
+                        <i class="fas fa-box"></i>
+                    </div>
+                    <h4>Packed</h4>
+                    <p>Quality checked & packed</p>
+                </div>
+                <div class="process-step">
+                    <div class="process-step-icon">
+                        <i class="fas fa-truck-loading"></i>
+                    </div>
+                    <h4>Shipped</h4>
+                    <p>On the way to you</p>
+                </div>
+                <div class="process-step">
+                    <div class="process-step-icon">
+                        <i class="fas fa-home"></i>
+                    </div>
+                    <h4>Delivered</h4>
+                    <p>At your doorstep</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Delivery Zones -->
+    <section class="logistics-section">
+        <div class="container">
+            <h2 class="section-title">Delivery Zones</h2>
+            <p class="section-subtitle">We deliver nationwide with varying delivery times</p>
+            
+            <div class="delivery-zones">
+                <div class="zone-card">
+                    <div class="zone-icon">
+                        <i class="fas fa-city"></i>
+                    </div>
+                    <h3>Metro Manila</h3>
+                    <p class="delivery-time">1-2 Business Days</p>
+                    <ul>
+                        <li>Same-day delivery available</li>
+                        <li>Free delivery over ₱5,000</li>
+                        <li>Real-time tracking</li>
+                        <li>COD available</li>
+                    </ul>
+                </div>
+                <div class="zone-card">
+                    <div class="zone-icon">
+                        <i class="fas fa-map-marked-alt"></i>
+                    </div>
+                    <h3>Luzon (Provincial)</h3>
+                    <p class="delivery-time">3-5 Business Days</p>
+                    <ul>
+                        <li>Cavite, Laguna, Batangas</li>
+                        <li>Bulacan, Pampanga, Rizal</li>
+                        <li>Free delivery over ₱10,000</li>
+                        <li>Tracking available</li>
+                    </ul>
+                </div>
+                <div class="zone-card">
+                    <div class="zone-icon">
+                        <i class="fas fa-globe-asia"></i>
+                    </div>
+                    <h3>Visayas & Mindanao</h3>
+                    <p class="delivery-time">5-7 Business Days</p>
+                    <ul>
+                        <li>Major cities covered</li>
+                        <li>Special rates for bulk</li>
+                        <li>Partner courier network</li>
+                        <li>Insurance available</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Shipping Rates -->
+    <section class="shipping-rates">
+        <div class="container">
+            <h2 class="section-title">Shipping Rates</h2>
+            <p class="section-subtitle">Transparent pricing with free shipping options</p>
+            
+            <div class="rates-table">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Delivery Zone</th>
+                            <th>Standard Delivery</th>
+                            <th>Express Delivery</th>
+                            <th>Free Shipping Threshold</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>Metro Manila</strong></td>
+                            <td>₱150 (1-2 days)</td>
+                            <td>₱300 (Same day)</td>
+                            <td class="highlight-free">Orders over ₱5,000</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Nearby Provinces</strong><br><small>Cavite, Laguna, Rizal, Bulacan</small></td>
+                            <td>₱250 (2-3 days)</td>
+                            <td>₱500 (Next day)</td>
+                            <td class="highlight-free">Orders over ₱8,000</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Rest of Luzon</strong></td>
+                            <td>₱400 (3-5 days)</td>
+                            <td>₱700 (2-3 days)</td>
+                            <td class="highlight-free">Orders over ₱15,000</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Visayas</strong></td>
+                            <td>₱600 (5-7 days)</td>
+                            <td>₱1,000 (3-4 days)</td>
+                            <td class="highlight-free">Orders over ₱20,000</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Mindanao</strong></td>
+                            <td>₱700 (5-7 days)</td>
+                            <td>₱1,200 (3-5 days)</td>
+                            <td class="highlight-free">Orders over ₱25,000</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="shipping-rates-info">
+                <p class="shipping-rates-info-text"><i class="fas fa-info-circle shipping-rates-info-icon"></i> Rates are for standard orders. Bulk orders (10,000+ trays) may qualify for special rates. <a href="contact.html" class="shipping-rates-link">Contact us</a> for custom quotes.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Delivery Partners -->
+    <section class="partners-section">
+        <div class="container">
+            <h2 class="section-title">Our Logistics Partners</h2>
+            <p class="section-subtitle">We work with trusted courier services</p>
+            
+            <div class="partners-grid">
+                <div class="partner-logo">LBC Express</div>
+                <div class="partner-logo">J&T Express</div>
+                <div class="partner-logo">JRS Express</div>
+                <div class="partner-logo">Lalamove</div>
+                <div class="partner-logo">Own Fleet</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Delivery Guarantee -->
+    <section class="logistics-section delivery-guarantee-section">
+        <div class="container">
+            <div class="delivery-guarantee-grid">
+                <div>
+                    <i class="fas fa-shield-alt delivery-guarantee-icon"></i>
+                    <h3>Safe Delivery</h3>
+                    <p class="delivery-guarantee-desc">Products packed securely to prevent damage</p>
+                </div>
+                <div>
+                    <i class="fas fa-clock delivery-guarantee-icon"></i>
+                    <h3>On-Time Guarantee</h3>
+                    <p class="delivery-guarantee-desc">98% of orders delivered on schedule</p>
+                </div>
+                <div>
+                    <i class="fas fa-exchange-alt delivery-guarantee-icon"></i>
+                    <h3>Easy Returns</h3>
+                    <p class="delivery-guarantee-desc">Hassle-free returns for damaged items</p>
+                </div>
+                <div>
+                    <i class="fas fa-headset delivery-guarantee-icon"></i>
+                    <h3>24/7 Support</h3>
+                    <p class="delivery-guarantee-desc">Dedicated support for delivery inquiries</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="logistics-section">
+        <div class="container">
+            <h2 class="section-title">Delivery FAQs</h2>
+            
+            <div class="faq-cards">
+                <div class="info-card faq-card">
+                    <h3 class="faq-card-title"><i class="fas fa-question-circle"></i> How can I track my order?</h3>
+                    <p class="faq-card-desc">You can track your order using the tracking form above or by logging into your account. You'll also receive SMS and email updates at each delivery stage.</p>
+                </div>
+                <div class="info-card faq-card">
+                    <h3 class="faq-card-title"><i class="fas fa-question-circle"></i> What if my order arrives damaged?</h3>
+                    <p class="faq-card-desc">Please document the damage with photos and contact us within 24 hours. We offer free replacement for damaged items. Our egg trays are packed with extra protection to minimize damage risk.</p>
+                </div>
+                <div class="info-card faq-card">
+                    <h3 class="faq-card-title"><i class="fas fa-question-circle"></i> Can I request a specific delivery date?</h3>
+                    <p class="faq-card-desc">Yes! You can specify a preferred delivery date when placing your order. For bulk orders, we coordinate delivery schedules to match your production needs.</p>
+                </div>
+                <div class="info-card faq-card">
+                    <h3 class="faq-card-title"><i class="fas fa-question-circle"></i> Do you offer pickup options?</h3>
+                    <p class="faq-card-desc">Yes, you can pick up your order from our warehouse in Quezon City. Pickup is free and available Monday to Saturday, 8:00 AM to 5:00 PM.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <h3>About LimTray</h3>
+                    <p>Leading manufacturer of eco-friendly egg trays and packaging solutions in the Philippines. Owned and operated by Joan Lim since 2010.</p>
+                    <div class="social-links">
+                        <a href="#" title="Facebook"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" title="Twitter"><i class="fab fa-twitter"></i></a>
+                        <a href="#" title="Instagram"><i class="fab fa-instagram"></i></a>
+                        <a href="#" title="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+                <div class="footer-col">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="products.html">Products</a></li>
+                        <li><a href="orders.html">Order Online</a></li>
+                        <li><a href="logistics.html">Logistics & Delivery</a></li>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h3>Customer Service</h3>
+                    <ul>
+                        <li><a href="faq.html">FAQs</a></li>
+                        <li><a href="shipping.html">Shipping Policy</a></li>
+                        <li><a href="returns.html">Returns & Refunds</a></li>
+                        <li><a href="terms.html">Terms & Conditions</a></li>
+                        <li><a href="privacy.html">Privacy Policy</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h3>Contact Info</h3>
+                    <ul class="contact-info">
+                        <li><i class="fas fa-map-marker-alt"></i> 123 Industrial Ave, Quezon City, Philippines</li>
+                        <li><i class="fas fa-phone"></i> +63 912 345 6789</li>
+                        <li><i class="fas fa-envelope"></i> info@limtray.com</li>
+                        <li><i class="fas fa-clock"></i> Mon-Sat: 8:00 AM - 6:00 PM</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 Ecopulp Packaging Supplies. All Rights Reserved. | Owned by Joan Lim</p>
+                <div class="payment-methods">
+                    <span>Payment Methods:</span>
+                    <i class="fab fa-cc-visa"></i>
+                    <i class="fab fa-cc-mastercard"></i>
+                    <i class="fab fa-paypal"></i>
+                    <i class="fas fa-money-bill-wave"></i>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+    <script>
+        function trackOrder(e) {
+            e.preventDefault();
+            const trackingNumber = document.getElementById('trackingNumber').value;
+            const resultDiv = document.getElementById('trackingResult');
+            
+            // Simulate tracking result
+            resultDiv.style.display = 'block';
+            resultDiv.innerHTML = `
+                <div class="track-result-box">
+                    <div class="track-result-header">
+                        <div>
+                            <h3 class="track-result-order">Order: ${trackingNumber}</h3>
+                            <p class="track-result-estimate">Estimated Delivery: January 8, 2026</p>
+                        </div>
+                        <span class="badge badge-processing">In Transit</span>
+                    </div>
+                    <div class="tracking-timeline">
+                        <div class="tracking-step completed">
+                            <h4>Order Confirmed</h4>
+                            <p>Your order has been confirmed and payment received</p>
+                            <span class="time">Jan 5, 2026 - 9:00 AM</span>
+                        </div>
+                        <div class="tracking-step completed">
+                            <h4>Processing</h4>
+                            <p>Your order is being prepared at our warehouse</p>
+                            <span class="time">Jan 5, 2026 - 2:00 PM</span>
+                        </div>
+                        <div class="tracking-step current">
+                            <h4>In Transit</h4>
+                            <p>Your package is on its way to you</p>
+                            <span class="time">Jan 6, 2026 - 8:00 AM</span>
+                        </div>
+                        <div class="tracking-step">
+                            <h4>Out for Delivery</h4>
+                            <p>Package will be delivered today</p>
+                        </div>
+                        <div class="tracking-step">
+                            <h4>Delivered</h4>
+                            <p>Package delivered successfully</p>
+                        </div>
+                    </div>
+                </div>
+            `;
+        }
+    </script>
+</body>
+</html>

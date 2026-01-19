@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign In - LimTray Manufacturing</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <div class="logo">
+                <a href="index.html">
+                    <div class="logo-text">
+                        <span class="logo-icon"><i class="fas fa-egg"></i></span>
+                        <span class="logo-name">LimTray</span>
+                    </div>
+                </a>
+            </div>
+            <nav class="main-nav">
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="products.html">Products</a></li>
+                    <li><a href="orders.html">Order Online</a></li>
+                    <li><a href="logistics.html">Logistics & Delivery</a></li>
+                    <li><a href="about.html">About Us</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </nav>
+            <div class="header-actions">
+                <a href="cart.html" class="cart-icon"><i class="fas fa-shopping-cart"></i><span class="cart-count">0</span></a>
+                <button class="mobile-menu-btn" title="Open menu"><i class="fas fa-bars"></i></button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Login Section -->
+    <section class="auth-section">
+        <div class="auth-container">
+            <div class="auth-card">
+                <div class="auth-header-center">
+                    <div class="auth-avatar">
+                        <i class="fas fa-user auth-avatar-icon"></i>
+                    </div>
+                    <h2 class="auth-title">Welcome Back</h2>
+                    <p class="auth-subtitle">Sign in to your account</p>
+                </div>
+                
+                <form id="loginForm">
+                    <div class="form-group">
+                        <label for="email">Email Address</label>
+                        <input type="email" id="email" name="email" placeholder="Enter your email" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="password">Password</label>
+                        <input type="password" id="password" name="password" placeholder="Enter your password" required>
+                    </div>
+                    
+                    <div class="auth-remember-row">
+                        <label class="auth-remember-label">
+                            <input type="checkbox" name="remember" class="auth-remember-checkbox">
+                            Remember me
+                        </label>
+                        <a href="forgot-password.html" class="auth-forgot-link">Forgot password?</a>
+                    </div>
+                    
+                    <button type="submit" class="btn btn-primary auth-submit-btn">
+                        <i class="fas fa-sign-in-alt"></i> Sign In
+                    </button>
+                </form>
+                
+                <div class="auth-divider">
+                    <span>or continue with</span>
+                </div>
+                <div class="auth-social-row">
+                    <button class="auth-social-btn auth-google-btn" title="Sign in with Google">
+                        <i class="fab fa-google auth-google-icon"></i>
+                        Google
+                    </button>
+                    <button class="auth-social-btn auth-facebook-btn" title="Sign in with Facebook">
+                        <i class="fab fa-facebook-f auth-facebook-icon"></i>
+                        Facebook
+                    </button>
+                </div>
+                
+                <div class="auth-footer">
+                    Don't have an account? <a href="register.html">Sign up for free</a>
+                </div>
+            </div>
+        </div>
+    </section>
+    <footer class="auth-footer-minimal">
+        <p>&copy; 2026 LimTray Manufacturing. All Rights Reserved. | Owned by Joan Lim</p>
+    </footer>
+    <script src="js/main.js"></script>
+</body>
+</html>

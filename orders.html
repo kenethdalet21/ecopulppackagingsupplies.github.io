@@ -1,0 +1,539 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Order Online - Ecopulp Packaging Supplies</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        .order-section {
+            padding: 60px 0;
+        }
+        .order-grid {
+            display: grid;
+            grid-template-columns: 1fr 400px;
+            gap: 40px;
+        }
+        .order-form-container {
+            background: white;
+            padding: 40px;
+            border-radius: 16px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+        .order-summary {
+            background: white;
+            padding: 30px;
+            border-radius: 16px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            height: fit-content;
+            position: sticky;
+            top: 100px;
+        }
+        .order-summary h3 {
+            margin-bottom: 20px;
+            padding-bottom: 15px;
+            border-bottom: 2px solid #E0E0E0;
+        }
+        .summary-item {
+            display: flex;
+            justify-content: space-between;
+            padding: 12px 0;
+            border-bottom: 1px solid #E0E0E0;
+        }
+        .summary-total {
+            display: flex;
+            justify-content: space-between;
+            padding: 20px 0;
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: #2E7D32;
+        }
+        .product-selector {
+            border: 2px solid #E0E0E0;
+            border-radius: 12px;
+            padding: 20px;
+            margin-bottom: 20px;
+            transition: all 0.3s ease;
+        }
+        .product-selector:hover {
+            border-color: #2E7D32;
+        }
+        .product-selector.selected {
+            border-color: #2E7D32;
+            background: #E8F5E9;
+        }
+        .product-selector-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            cursor: pointer;
+        }
+        .product-selector-header h4 {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .product-selector-header h4 input {
+            width: 20px;
+            height: 20px;
+        }
+        .product-quantity {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-top: 15px;
+        }
+        .product-quantity label {
+            flex: 1;
+        }
+        .quantity-input {
+            display: flex;
+            align-items: center;
+            border: 2px solid #E0E0E0;
+            border-radius: 8px;
+            overflow: hidden;
+        }
+        .quantity-input button {
+            width: 40px;
+            height: 40px;
+            border: none;
+            background: #f5f5f5;
+            cursor: pointer;
+            font-size: 1.2rem;
+        }
+        .quantity-input button:hover {
+            background: #2E7D32;
+            color: white;
+        }
+        .quantity-input input {
+            width: 60px;
+            height: 40px;
+            border: none;
+            text-align: center;
+            font-size: 1rem;
+        }
+        .payment-tabs {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+        .payment-tab {
+            flex: 1;
+            padding: 15px;
+            border: 2px solid #E0E0E0;
+            border-radius: 8px;
+            background: white;
+            cursor: pointer;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+        .payment-tab:hover {
+            border-color: #2E7D32;
+        }
+        .payment-tab.active {
+            border-color: #2E7D32;
+            background: #E8F5E9;
+        }
+        .payment-tab i {
+            font-size: 1.5rem;
+            display: block;
+            margin-bottom: 5px;
+        }
+        .payment-content {
+            display: none;
+        }
+        .payment-content.active {
+            display: block;
+        }
+        .section-divider {
+            margin: 30px 0;
+            padding-top: 30px;
+            border-top: 2px solid #E0E0E0;
+        }
+        .section-divider h3 {
+            margin-bottom: 20px;
+            color: #333;
+        }
+        @media (max-width: 1024px) {
+            .order-grid {
+                grid-template-columns: 1fr;
+            }
+            .order-summary {
+                position: static;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Top Bar -->
+    <div class="top-bar">
+        <div class="container">
+            <div class="top-bar-left">
+                <span><i class="fas fa-phone"></i> +63 912 345 6789</span>
+                <span><i class="fas fa-envelope"></i> info@limtray.com</span>
+            </div>
+            <div class="top-bar-right">
+                <a href="login.html"><i class="fas fa-user"></i> Sign In</a>
+                <a href="register.html" class="btn-join">Join Free</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <div class="logo">
+                <a href="index.html">
+                    <div class="logo-text">
+                        <span class="logo-icon"><i class="fas fa-egg"></i></span>
+                        <span class="logo-name">LimTray</span>
+                    </div>
+                </a>
+            </div>
+            <nav class="main-nav">
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="products.html">Products</a></li>
+                    <li><a href="orders.html" class="active">Order Online</a></li>
+                    <li><a href="logistics.html">Logistics & Delivery</a></li>
+                    <li><a href="about.html">About Us</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </nav>
+            <div class="header-actions">
+                <a href="cart.html" class="cart-icon"><i class="fas fa-shopping-cart"></i><span class="cart-count">0</span></a>
+                <button class="mobile-menu-btn" title="Open mobile menu"><i class="fas fa-bars"></i></button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Page Header -->
+    <div class="page-header">
+        <div class="container">
+            <h1>Order Online</h1>
+            <p>Place your order in just a few simple steps</p>
+            <div class="breadcrumb">
+                <a href="index.html">Home</a> / <span>Order Online</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Order Section -->
+    <section class="order-section">
+        <div class="container">
+            <div class="order-grid">
+                <!-- Order Form -->
+                <div class="order-form-container">
+                    <form id="orderForm">
+                        <!-- Product Selection -->
+                        <h3><i class="fas fa-box order-icon-green"></i>30-Cell Egg Tray Only</h3>
+                        <div class="product-selector" data-price="8.50">
+                            <div class="product-selector-header">
+                                    <h4>
+                                        <input type="checkbox" name="product_1" value="30-cell-standard" checked disabled title="Select 30-Cell Egg Tray">
+                                        30-Cell Egg Tray (Standard)
+                                    </h4>
+                                    <span class="order-price-green">₱8.50/tray</span>
+                            </div>
+                            <div class="product-quantity">
+                                <label>Quantity:</label>
+                                <div class="quantity-input">
+                                        <input type="number" id="orderQtyInput" name="qty_1" value="0" min="1" step="1" readonly class="order-qty-input-bg" title="Quantity" placeholder="Qty">
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Delivery Information -->
+                        <div class="section-divider">
+                            <h3><i class="fas fa-truck order-icon-green"></i>Delivery Information</h3>
+                        </div>
+
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="firstName">First Name *</label>
+                                <input type="text" id="firstName" name="firstName" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="lastName">Last Name *</label>
+                                <input type="text" id="lastName" name="lastName" required>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="company">Company Name</label>
+                            <input type="text" id="company" name="company">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="email">Email Address *</label>
+                            <input type="email" id="email" name="email" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="phone">Phone Number *</label>
+                            <input type="tel" id="phone" name="phone" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="address">Delivery Address *</label>
+                            <input type="text" id="address" name="address" placeholder="Street Address" required>
+                        </div>
+
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="city">City *</label>
+                                <input type="text" id="city" name="city" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="province">Province *</label>
+                                <select id="province" name="province" required>
+                                    <option value="">Select Province</option>
+                                    <option value="metro-manila">Metro Manila</option>
+                                    <option value="cavite">Cavite</option>
+                                    <option value="laguna">Laguna</option>
+                                    <option value="batangas">Batangas</option>
+                                    <option value="rizal">Rizal</option>
+                                    <option value="bulacan">Bulacan</option>
+                                    <option value="pampanga">Pampanga</option>
+                                    <option value="other">Other (specify in notes)</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="zip">ZIP Code *</label>
+                            <input type="text" id="zip" name="zip" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="deliveryNotes">Delivery Notes</label>
+                            <textarea id="deliveryNotes" name="deliveryNotes" rows="3" placeholder="Special instructions for delivery..."></textarea>
+                        </div>
+
+                        <!-- Payment Method -->
+                        <div class="section-divider">
+                            <h3><i class="fas fa-credit-card order-icon-green"></i>Payment Method</h3>
+                        </div>
+
+                        <div class="payment-tabs">
+                            <div class="payment-tab active" data-tab="bank-transfer">
+                                <i class="fas fa-university"></i>
+                                Bank Transfer
+                            </div>
+                            <div class="payment-tab" data-tab="gcash">
+                                <i class="fas fa-mobile-alt"></i>
+                                GCash
+                            </div>
+                            <div class="payment-tab" data-tab="cod">
+                                <i class="fas fa-money-bill-wave"></i>
+                                Cash on Delivery
+                            </div>
+                        </div>
+
+                        <div id="bank-transfer" class="payment-content active">
+                            <div class="alert alert-info">
+                                <p><strong>Bank Transfer Details:</strong></p>
+                                <p>Bank: BDO (Banco de Oro)</p>
+                                <p>Account Name: Ecopulp Packaging Supplies</p>
+                                <p>Account Number: 1234-5678-9012</p>
+                                <p class="order-payment-note"><small>Please upload your proof of payment after placing the order.</small></p>
+                            </div>
+                        </div>
+
+                        <div id="gcash" class="payment-content">
+                            <div class="alert alert-info">
+                                <p><strong>GCash Details:</strong></p>
+                                <p>GCash Number: 0912 345 6789</p>
+                                <p>Account Name: Joan Lim</p>
+                                <p class="order-payment-note"><small>Please include your Order ID in the payment reference.</small></p>
+                            </div>
+                        </div>
+
+                        <div id="cod" class="payment-content">
+                            <div class="alert alert-warning">
+                                <p><strong>Cash on Delivery</strong></p>
+                                <p>Available for Metro Manila orders only.</p>
+                                <p>A 5% COD fee will be added to your total.</p>
+                                <p>Please prepare exact amount for faster transaction.</p>
+                            </div>
+                        </div>
+
+                        <div class="form-group order-terms-group">
+                            <label class="order-terms-label">
+                                <input type="checkbox" name="terms" required class="order-terms-checkbox">
+                                I agree to the <a href="terms.html" class="order-link-green">Terms & Conditions</a> and <a href="privacy.html" class="order-link-green">Privacy Policy</a>
+                            </label>
+                        </div>
+
+                        <button type="submit" class="btn btn-primary order-submit-btn">
+                            <i class="fas fa-check-circle"></i> Place Order
+                        </button>
+                    </form>
+                </div>
+
+                <!-- Order Summary -->
+                <div class="order-summary">
+                    <h3><i class="fas fa-receipt order-icon-green"></i>Order Summary</h3>
+                    
+                    <div id="selectedProducts">
+                        <p class="order-summary-empty">Select products to see summary</p>
+                    </div>
+
+                    <div class="summary-item">
+                        <span>Subtotal</span>
+                        <span id="subtotal">₱0.00</span>
+                    </div>
+                    <div class="summary-item">
+                        <span>Shipping</span>
+                        <span id="shipping">Calculated at checkout</span>
+                    </div>
+                    <div class="summary-item">
+                        <!-- Tax removed -->
+                    </div>
+                    <div class="summary-total">
+                        <span>Total</span>
+                        <span id="total">₱0.00</span>
+                    </div>
+
+                    <div class="order-estimate-box">
+                        <h4 class="order-estimate-title"><i class="fas fa-truck"></i> Delivery Estimate</h4>
+                        <p class="order-estimate-desc">Provincial: 2-3 business days</p>
+                        <p class="order-estimate-desc">Metro Manila: 5-7 business days</p>
+                    </div>
+
+                    <div class="order-summary-secure">
+                        <p class="order-summary-secure-text"><i class="fas fa-lock order-icon-green"></i> Secure Checkout</p>
+                        <p class="order-summary-secure-text"><i class="fas fa-shield-alt order-icon-green"></i> 100% Quality Guarantee</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <h3>About LimTray</h3>
+                    <p>Leading manufacturer of eco-friendly egg trays and packaging solutions in the Philippines. Owned and operated by Joan Lim since 2010.</p>
+                    <div class="social-links">
+                        <a href="#" title="Facebook"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" title="Twitter"><i class="fab fa-twitter"></i></a>
+                        <a href="#" title="Instagram"><i class="fab fa-instagram"></i></a>
+                        <a href="#" title="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+                <div class="footer-col">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="products.html">Products</a></li>
+                        <li><a href="orders.html">Order Online</a></li>
+                        <li><a href="logistics.html">Logistics & Delivery</a></li>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h3>Customer Service</h3>
+                    <ul>
+                        <li><a href="faq.html">FAQs</a></li>
+                        <li><a href="shipping.html">Shipping Policy</a></li>
+                        <li><a href="returns.html">Returns & Refunds</a></li>
+                        <li><a href="terms.html">Terms & Conditions</a></li>
+                        <li><a href="privacy.html">Privacy Policy</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h3>Contact Info</h3>
+                    <ul class="contact-info">
+                        <li><i class="fas fa-map-marker-alt"></i> 123 Industrial Ave, Quezon City, Philippines</li>
+                        <li><i class="fas fa-phone"></i> +63 912 345 6789</li>
+                        <li><i class="fas fa-envelope"></i> info@limtray.com</li>
+                        <li><i class="fas fa-clock"></i> Mon-Sat: 8:00 AM - 6:00 PM</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 Ecopulp Packaging Supplies. All Rights Reserved. | Owned by Joan Lim</p>
+                <div class="payment-methods">
+                    <span>Payment Methods:</span>
+                    <i class="fab fa-cc-visa"></i>
+                    <i class="fab fa-cc-mastercard"></i>
+                    <i class="fab fa-paypal"></i>
+                    <i class="fas fa-money-bill-wave"></i>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+    <script>
+        // Payment tabs
+        document.querySelectorAll('.payment-tab').forEach(tab => {
+            tab.addEventListener('click', function() {
+                document.querySelectorAll('.payment-tab').forEach(t => t.classList.remove('active'));
+                document.querySelectorAll('.payment-content').forEach(c => c.classList.remove('active'));
+                this.classList.add('active');
+                document.getElementById(this.dataset.tab).classList.add('active');
+            });
+        });
+
+        // Fetch cart from localStorage and show in order summary and quantity input
+        function loadCartToOrderForm() {
+            const cart = JSON.parse(localStorage.getItem('limtray_cart')) || [];
+            const selectedProducts = document.getElementById('selectedProducts');
+            let subtotal = 0;
+            let html = '';
+            let totalQty = 0;
+            if (cart.length > 0) {
+                cart.forEach(item => {
+                    const total = item.price * item.quantity;
+                    subtotal += total;
+                    totalQty += item.quantity;
+                    html += `
+                        <div class="summary-item">
+                            <span>${item.name}<br><small style="color: #666;">${item.quantity} × ₱${item.price.toFixed(2)}</small></span>
+                            <span>₱${total.toFixed(2)}</span>
+                        </div>
+                    `;
+                });
+                // Set quantity input to total cart quantity
+                const qtyInput = document.getElementById('orderQtyInput');
+                if (qtyInput) {
+                    qtyInput.value = totalQty;
+                    qtyInput.readOnly = true;
+                }
+                document.getElementById('orderForm').querySelector('button[type="submit"]').disabled = false;
+            } else {
+                selectedProducts.innerHTML = '<p style="color: #999; text-align: center; padding: 20px;">Your cart is empty</p>';
+                const qtyInput = document.getElementById('orderQtyInput');
+                if (qtyInput) {
+                    qtyInput.value = 0;
+                    qtyInput.readOnly = true;
+                }
+                document.getElementById('orderForm').querySelector('button[type="submit"]').disabled = true;
+            }
+            selectedProducts.innerHTML = html || '<p style="color: #999; text-align: center; padding: 20px;">Your cart is empty</p>';
+            const shipping = subtotal > 0 ? (subtotal > 5000 ? 0 : 500) : 0;
+            const total = subtotal + shipping;
+            document.getElementById('subtotal').textContent = `₱${subtotal.toFixed(2)}`;
+            document.getElementById('shipping').textContent = shipping === 0 ? 'FREE' : `₱${shipping.toFixed(2)}`;
+            document.getElementById('total').textContent = `₱${total.toFixed(2)}`;
+        }
+
+        // On page load, load cart to order summary and quantity
+        document.addEventListener('DOMContentLoaded', function() {
+            loadCartToOrderForm();
+        });
+
+        // On order submit, clear cart
+        document.getElementById('orderForm').addEventListener('submit', function(e) {
+            // You can add validation or AJAX here
+            localStorage.removeItem('limtray_cart');
+        });
+    </script>
+</body>
+</html>

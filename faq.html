@@ -1,0 +1,438 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FAQs - Ecopulp Packaging Supplies</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        .faq-section {
+            padding: 60px 0;
+        }
+        .faq-container {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+        .faq-category {
+            margin-bottom: 50px;
+        }
+        .faq-category h2 {
+            color: #2E7D32;
+            margin-bottom: 25px;
+            font-size: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .faq-item {
+            background: white;
+            border-radius: 12px;
+            margin-bottom: 15px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+            overflow: hidden;
+        }
+        .faq-question {
+            padding: 20px 25px;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-weight: 500;
+            color: #333;
+            transition: all 0.3s ease;
+        }
+        .faq-question:hover {
+            background: #F5F5F5;
+        }
+        .faq-question.active {
+            background: #E8F5E9;
+            color: #2E7D32;
+        }
+        .faq-question i {
+            transition: transform 0.3s ease;
+        }
+        .faq-question.active i {
+            transform: rotate(180deg);
+        }
+        .faq-answer {
+            padding: 0 25px;
+            max-height: 0;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+        .faq-answer.show {
+            padding: 20px 25px;
+            padding-top: 0;
+            max-height: 500px;
+        }
+        .faq-answer p {
+            color: #666;
+            line-height: 1.8;
+        }
+        .faq-search {
+            max-width: 600px;
+            margin: 0 auto 50px;
+        }
+        .faq-search input {
+            width: 100%;
+            padding: 18px 25px;
+            border: 2px solid #E0E0E0;
+            border-radius: 50px;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+        }
+        .faq-search input:focus {
+            border-color: #2E7D32;
+            outline: none;
+            box-shadow: 0 0 0 4px rgba(46, 125, 50, 0.1);
+        }
+        .contact-cta {
+            background: #F5F5F5;
+            border-radius: 16px;
+            padding: 40px;
+            text-align: center;
+            margin-top: 50px;
+        }
+        .contact-cta h3 {
+            margin-bottom: 10px;
+        }
+        .contact-cta p {
+            color: #666;
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+    <!-- Top Bar -->
+    <div class="top-bar">
+        <div class="container">
+            <div class="top-bar-left">
+                <span><i class="fas fa-phone"></i> +63 915 674 7277</span>
+                <span><i class="fas fa-envelope"></i> limjoanbcbp19@gmail.com</span>
+            </div>
+            <div class="top-bar-right">
+                <a href="login.html"><i class="fas fa-user"></i> Sign In</a>
+                <a href="register.html" class="btn-join">Join Free</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <div class="logo">
+                <a href="index.html">
+                    <div class="logo-text">
+                        <span class="logo-icon"><i class="fas fa-egg"></i></span>
+                        <span class="logo-name">Ecopulp Packaging Supplies</span>
+                    </div>
+                </a>
+            </div>
+            <nav class="main-nav">
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="products.html">Product/s</a></li>
+                    <li><a href="orders.html">Order Online</a></li>
+                    <li><a href="logistics.html">Logistics & Delivery</a></li>
+                    <li><a href="about.html">About Us</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </nav>
+            <div class="header-actions">
+                <a href="cart.html" class="cart-icon"><i class="fas fa-shopping-cart"></i><span class="cart-count">0</span></a>
+                <button class="mobile-menu-btn" title="Open menu"><i class="fas fa-bars"></i></button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Page Header -->
+    <div class="page-header">
+        <div class="container">
+            <h1>Frequently Asked Questions</h1>
+            <p>Find answers to common questions about our products and services</p>
+            <div class="breadcrumb">
+                <a href="index.html">Home</a> / <span>FAQs</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- FAQ Section -->
+    <section class="faq-section">
+        <div class="container">
+            <div class="faq-container">
+                <!-- Search -->
+                <div class="faq-search">
+                    <input type="text" placeholder="Search for questions..." id="faqSearch" onkeyup="searchFAQ()">
+                </div>
+
+                <!-- Products FAQs -->
+                <div class="faq-category">
+                    <h2><i class="fas fa-box"></i> Products</h2>
+                    
+                    <div class="faq-item">
+                        <div class="faq-question" onclick="toggleFAQ(this)">
+                            What types of egg trays do you offer?
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                        <div class="faq-answer">
+                            <p>We offer a wide range of egg trays including: 30-cell and 36-cell standard trays for commercial use, 6, 12, and 18-egg retail cartons with lids, quail egg trays (20-cell and 30-cell), stackable transport trays, and custom solutions with your branding. All our products are made from eco-friendly recycled materials.</p>
+                        </div>
+                    </div>
+
+                    <div class="faq-item">
+                        <div class="faq-question" onclick="toggleFAQ(this)">
+                            Are your egg trays eco-friendly?
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                        <div class="faq-answer">
+                            <p>Yes! All our egg trays are made from 100% recycled paper pulp and are fully biodegradable. They can be composted or recycled again after use. We're committed to sustainable manufacturing practices and have been certified eco-friendly by environmental authorities.</p>
+                        </div>
+                    </div>
+
+                    <div class="faq-item">
+                        <div class="faq-question" onclick="toggleFAQ(this)">
+                            Can you produce custom-sized trays?
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                        <div class="faq-answer">
+                            <p>Absolutely! We can manufacture trays with custom cell counts, dimensions, and configurations to meet your specific needs. Custom orders typically require a minimum quantity and may need additional lead time for mold creation. Contact our sales team for a custom quote.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Ordering FAQs -->
+                <div class="faq-category">
+                    <h2><i class="fas fa-shopping-cart"></i> Ordering</h2>
+                    
+                    <div class="faq-item">
+                        <div class="faq-question" onclick="toggleFAQ(this)">
+                            What is the minimum order quantity?
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                        <div class="faq-answer">
+                            <p>Our minimum order quantity is 100 trays for standard products. For custom or branded trays, minimums typically start at 500-1,000 trays depending on the specifications. We offer bulk discounts for larger orders - contact us for pricing on orders of 10,000+ trays.</p>
+                        </div>
+                    </div>
+
+                    <div class="faq-item">
+                        <div class="faq-question" onclick="toggleFAQ(this)">
+                            How do I place an order?
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                        <div class="faq-answer">
+                            <p>You can place orders through our website using the online order form, by calling us at +63 912 345 6789, or by emailing sales@limtray.com. For regular customers, we can set up standing orders with automatic deliveries on your preferred schedule.</p>
+                        </div>
+                    </div>
+
+                    <div class="faq-item">
+                        <div class="faq-question" onclick="toggleFAQ(this)">
+                            Can I modify or cancel my order?
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                        <div class="faq-answer">
+                            <p>Orders can be modified or cancelled within 24 hours of placement at no charge. After production has started, modifications may not be possible for custom orders. Standard product orders can sometimes be modified - please contact us immediately if you need changes.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Payment FAQs -->
+                <div class="faq-category">
+                    <h2><i class="fas fa-credit-card"></i> Payment</h2>
+                    
+                    <div class="faq-item">
+                        <div class="faq-question" onclick="toggleFAQ(this)">
+                            What payment methods do you accept?
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                        <div class="faq-answer">
+                            <p>We accept multiple payment methods: Bank Transfer (BDO, BPI, Metrobank), GCash and Maya mobile payments, PayPal for online transactions, Credit/Debit Cards (Visa, Mastercard), and Cash on Delivery (Metro Manila only, with 5% COD fee). For business accounts, we offer 30-day credit terms after credit approval.</p>
+                        </div>
+                    </div>
+
+                    <div class="faq-item">
+                        <div class="faq-question" onclick="toggleFAQ(this)">
+                            Do you offer credit terms for businesses?
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                        <div class="faq-answer">
+                            <p>Yes, we offer 30-day credit terms for qualified business customers. To apply, you'll need to complete a credit application form and provide business registration documents. Credit limits are determined based on order history and business verification.</p>
+                        </div>
+                    </div>
+
+                    <div class="faq-item">
+                        <div class="faq-question" onclick="toggleFAQ(this)">
+                            Are there any bulk order discounts?
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                        <div class="faq-answer">
+                            <p>Yes! We offer tiered pricing for bulk orders: 5% discount for orders of 1,000-4,999 trays, 10% discount for 5,000-9,999 trays, 15% discount for 10,000+ trays, and custom pricing for orders over 50,000 trays. Contact our sales team for a personalized quote.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Delivery FAQs -->
+                <div class="faq-category">
+                    <h2><i class="fas fa-truck"></i> Delivery</h2>
+                    
+                    <div class="faq-item">
+                        <div class="faq-question" onclick="toggleFAQ(this)">
+                            How long does delivery take?
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                        <div class="faq-answer">
+                            <p>Delivery times vary by location: Metro Manila: 1-2 business days (same-day available), Nearby provinces (Cavite, Laguna, Rizal, Bulacan): 2-3 days, Rest of Luzon: 3-5 days, Visayas: 5-7 days, and Mindanao: 5-7 days. Production time for custom orders may add 3-5 additional days.</p>
+                        </div>
+                    </div>
+
+                    <div class="faq-item">
+                        <div class="faq-question" onclick="toggleFAQ(this)">
+                            Do you offer free shipping?
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                        <div class="faq-answer">
+                            <p>Yes! Free shipping thresholds vary by location: Metro Manila - orders over ₱5,000, Nearby provinces - orders over ₱8,000, Rest of Luzon - orders over ₱15,000, Visayas - orders over ₱20,000, and Mindanao - orders over ₱25,000. Regular customers may qualify for preferential shipping rates.</p>
+                        </div>
+                    </div>
+
+                    <div class="faq-item">
+                        <div class="faq-question" onclick="toggleFAQ(this)">
+                            Can I track my order?
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                        <div class="faq-answer">
+                            <p>Yes, all orders come with tracking. You'll receive SMS and email updates at each stage: order confirmation, processing, shipped, and delivered. You can also track your order on our website by entering your order number on the Logistics page.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Returns FAQs -->
+                <div class="faq-category">
+                    <h2><i class="fas fa-exchange-alt"></i> Returns & Refunds</h2>
+                    
+                    <div class="faq-item">
+                        <div class="faq-question" onclick="toggleFAQ(this)">
+                            What is your return policy?
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                        <div class="faq-answer">
+                            <p>We accept returns for damaged or defective products within 7 days of delivery. Products must be unused and in original packaging. Custom/branded products cannot be returned unless defective. Please document any damage with photos and contact us immediately upon receipt.</p>
+                        </div>
+                    </div>
+
+                    <div class="faq-item">
+                        <div class="faq-question" onclick="toggleFAQ(this)">
+                            How do I request a refund?
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                        <div class="faq-answer">
+                            <p>To request a refund, contact our customer service team with your order number and reason for return. For damaged items, please include photos. Once approved, refunds are processed within 5-7 business days to your original payment method. We may offer replacement as an alternative.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Contact CTA -->
+                <div class="contact-cta">
+                    <h3>Still have questions?</h3>
+                    <p>Our customer service team is here to help you</p>
+                    <a href="contact.html" class="btn btn-primary">Contact Us</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <h3>About Ecopulp Packaging Supplies</h3>
+                    <p>Leading manufacturer of eco-friendly egg trays and packaging solutions in the Philippines. Owned and operated by Joan Lim since 2012.</p>
+                    <div class="social-links">
+                        <a href="#" title="Facebook"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" title="Twitter"><i class="fab fa-twitter"></i></a>
+                        <a href="#" title="Instagram"><i class="fab fa-instagram"></i></a>
+                        <a href="#" title="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+                <div class="footer-col">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="products.html">Product/s</a></li>
+                        <li><a href="orders.html">Order Online</a></li>
+                        <li><a href="logistics.html">Logistics & Delivery</a></li>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h3>Customer Service</h3>
+                    <ul>
+                        <li><a href="faq.html">FAQs</a></li>
+                        <li><a href="shipping.html">Shipping Policy</a></li>
+                        <li><a href="returns.html">Returns & Refunds</a></li>
+                        <li><a href="terms.html">Terms & Conditions</a></li>
+                        <li><a href="privacy.html">Privacy Policy</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h3>Contact Info</h3>
+                    <ul class="contact-info">
+                        <li><i class="fas fa-map-marker-alt"></i> JAKA Compound Carig Norte, Tuguegarao City, Cagayan, Philippines</li>
+                        <li><i class="fas fa-phone"></i> +63 915 674 7277</li>
+                        <li><i class="fas fa-envelope"></i> limjoanbcbp19@gmail.com</li>
+                        <li><i class="fas fa-clock"></i> Mon-Sat: 8:00 AM - 6:00 PM</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 Ecopulp Packaging Supplies. All Rights Reserved. | Owned by Joan Lim</p>
+                <div class="payment-methods">
+                    <span>Payment Methods:</span>
+                    <i class="fab fa-cc-visa"></i>
+                    <i class="fab fa-cc-mastercard"></i>
+                    <i class="fab fa-paypal"></i>
+                    <i class="fas fa-money-bill-wave"></i>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+    <script>
+        function toggleFAQ(element) {
+            const answer = element.nextElementSibling;
+            const isActive = element.classList.contains('active');
+            
+            // Close all others
+            document.querySelectorAll('.faq-question').forEach(q => {
+                q.classList.remove('active');
+                q.nextElementSibling.classList.remove('show');
+            });
+            
+            // Toggle current
+            if (!isActive) {
+                element.classList.add('active');
+                answer.classList.add('show');
+            }
+        }
+
+        function searchFAQ() {
+            const query = document.getElementById('faqSearch').value.toLowerCase();
+            const items = document.querySelectorAll('.faq-item');
+            
+            items.forEach(item => {
+                const question = item.querySelector('.faq-question').textContent.toLowerCase();
+                const answer = item.querySelector('.faq-answer').textContent.toLowerCase();
+                
+                if (question.includes(query) || answer.includes(query)) {
+                    item.style.display = 'block';
+                } else {
+                    item.style.display = 'none';
+                }
+            });
+        }
+    </script>
+</body>
+</html>

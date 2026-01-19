@@ -1,0 +1,619 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us - Ecopulp Packaging Supplies</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        .about-hero {
+            background: linear-gradient(135deg, rgba(27, 94, 32, 0.9), rgba(46, 125, 50, 0.9)), url('images/factory-bg.jpg') center/cover;
+            color: white;
+            padding: 100px 0;
+            text-align: center;
+        }
+        .about-hero h1 {
+            font-size: 3rem;
+            margin-bottom: 20px;
+        }
+        .about-section {
+            padding: 80px 0;
+        }
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+        }
+        .about-image {
+            background: linear-gradient(135deg, #2E7D32, #1B5E20);
+            border-radius: 20px;
+            padding: 60px;
+            text-align: center;
+        }
+        .about-image i {
+            font-size: 8rem;
+            color: white;
+            opacity: 0.9;
+        }
+        .about-content h2 {
+            font-size: 2.2rem;
+            margin-bottom: 20px;
+            color: #333;
+        }
+        .about-content p {
+            color: #666;
+            line-height: 1.8;
+            margin-bottom: 20px;
+        }
+        .owner-section {
+            background: #F5F5F5;
+            padding: 80px 0;
+        }
+        .owner-card {
+            background: white;
+            border-radius: 20px;
+            padding: 60px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+            display: grid;
+            grid-template-columns: 300px 1fr;
+            gap: 50px;
+            align-items: center;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+        .owner-photo {
+            width: 250px;
+            height: 250px;
+            background: linear-gradient(135deg, #4CAF50, #2E7D32);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto;
+        }
+        .owner-photo i {
+            font-size: 6rem;
+            color: white;
+        }
+        .owner-info h2 {
+            font-size: 2rem;
+            margin-bottom: 5px;
+            color: #2E7D32;
+        }
+        .owner-info .title {
+            color: #FF8F00;
+            font-weight: 600;
+            margin-bottom: 20px;
+        }
+        .owner-info p {
+            color: #666;
+            line-height: 1.8;
+            margin-bottom: 15px;
+        }
+        .owner-info .quote {
+            font-style: italic;
+            font-size: 1.1rem;
+            color: #2E7D32;
+            border-left: 4px solid #2E7D32;
+            padding-left: 20px;
+            margin-top: 20px;
+        }
+        .values-section {
+            padding: 80px 0;
+        }
+        .values-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+        }
+        .value-card {
+            text-align: center;
+            padding: 40px 30px;
+            border-radius: 16px;
+            background: white;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+        }
+        .value-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15);
+        }
+        .value-icon {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, #4CAF50, #2E7D32);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+        }
+        .value-icon i {
+            font-size: 2rem;
+            color: white;
+        }
+        .value-card h3 {
+            font-size: 1.3rem;
+            margin-bottom: 15px;
+            color: #333;
+        }
+        .value-card p {
+            color: #666;
+        }
+        .timeline-section {
+            background: #F5F5F5;
+            padding: 80px 0;
+        }
+        .timeline {
+            position: relative;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 4px;
+            height: 100%;
+            background: #2E7D32;
+        }
+        .timeline-item {
+            display: flex;
+            justify-content: flex-end;
+            padding-right: 50%;
+            position: relative;
+            margin-bottom: 50px;
+        }
+        .timeline-item:nth-child(even) {
+            justify-content: flex-start;
+            padding-right: 0;
+            padding-left: 50%;
+        }
+        .timeline-content {
+            background: white;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            width: calc(100% - 40px);
+            position: relative;
+        }
+        .timeline-item::after {
+            content: '';
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 20px;
+            height: 20px;
+            background: #FF8F00;
+            border: 4px solid #2E7D32;
+            border-radius: 50%;
+            top: 30px;
+        }
+        .timeline-year {
+            color: #2E7D32;
+            font-weight: 700;
+            font-size: 1.3rem;
+            margin-bottom: 10px;
+        }
+        .timeline-content h3 {
+            margin-bottom: 10px;
+            color: #333;
+        }
+        .timeline-content p {
+            color: #666;
+            font-size: 0.95rem;
+        }
+        .stats-section {
+            background: linear-gradient(135deg, #2E7D32, #1B5E20);
+            color: white;
+            padding: 80px 0;
+        }
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 40px;
+            text-align: center;
+        }
+        .stat-item {
+            padding: 30px;
+        }
+        .stat-number {
+            font-size: 3.5rem;
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+        .stat-label {
+            font-size: 1.1rem;
+            opacity: 0.9;
+        }
+        .certifications-section {
+            padding: 80px 0;
+        }
+        .cert-grid {
+            display: flex;
+            justify-content: center;
+            gap: 50px;
+            flex-wrap: wrap;
+        }
+        .cert-badge {
+            width: 150px;
+            height: 150px;
+            background: #F5F5F5;
+            border-radius: 50%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 20px;
+        }
+        .cert-badge i {
+            font-size: 2.5rem;
+            color: #2E7D32;
+            margin-bottom: 10px;
+        }
+        .cert-badge span {
+            font-size: 0.8rem;
+            font-weight: 600;
+            color: #333;
+        }
+        @media (max-width: 768px) {
+            .about-grid {
+                grid-template-columns: 1fr;
+            }
+            .owner-card {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+            .values-grid {
+                grid-template-columns: 1fr;
+            }
+            .stats-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            .timeline::before {
+                left: 20px;
+            }
+            .timeline-item,
+            .timeline-item:nth-child(even) {
+                padding-left: 60px;
+                padding-right: 0;
+                justify-content: flex-start;
+            }
+            .timeline-item::after {
+                left: 20px;
+            }
+            .about-hero h1 {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Top Bar -->
+    <div class="top-bar">
+        <div class="container">
+            <div class="top-bar-left">
+                <span><i class="fas fa-phone"></i> +63 912 345 6789</span>
+                <span><i class="fas fa-envelope"></i> info@limtray.com</span>
+            </div>
+            <div class="top-bar-right">
+                <a href="login.html"><i class="fas fa-user"></i> Sign In</a>
+                <a href="register.html" class="btn-join">Join Free</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <div class="logo">
+                <a href="index.html">
+                    <div class="logo-text">
+                        <span class="logo-icon"><i class="fas fa-egg"></i></span>
+                        <span class="logo-name">LimTray</span>
+                    </div>
+                </a>
+            </div>
+            <nav class="main-nav">
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="products.html">Products</a></li>
+                    <li><a href="orders.html">Order Online</a></li>
+                    <li><a href="logistics.html">Logistics & Delivery</a></li>
+                    <li><a href="about.html" class="active">About Us</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </nav>
+            <div class="header-actions">
+                <a href="cart.html" class="cart-icon"><i class="fas fa-shopping-cart"></i><span class="cart-count">0</span></a>
+                <button class="mobile-menu-btn" title="Open menu"><i class="fas fa-bars"></i></button>
+            </div>
+        </div>
+    </header>
+
+    <!-- About Hero -->
+    <div class="about-hero">
+        <div class="container">
+            <h1>About Ecopulp Packaging Supplies</h1>
+            <p class="about-hero-desc">Your trusted partner in eco-friendly egg packaging solutions since 2010</p>
+        </div>
+    </div>
+
+    <!-- Our Story -->
+    <section class="about-section">
+        <div class="container">
+            <div class="about-grid">
+                <div class="about-image">
+                    <i class="fas fa-industry"></i>
+                </div>
+                <div class="about-content">
+                    <h2>Our Story</h2>
+                    <p>Ecopulp Packaging Supplies began as a small family operation in 2012, driven by a vision to provide high-quality, sustainable egg packaging solutions to local poultry farmers. What started in a small workshop in Carig Norte has grown into one of the leading egg tray manufacturers in the Philippines Nationwide.</p>
+                    <p>Our founder, Joan Lim, recognized the need for reliable, eco-friendly packaging that could protect eggs during transport while being environmentally responsible. With dedication and innovation, we've expanded our production capacity to serve over 200 clients nationwide.</p>
+                    <p>Today, we produce over 500,000+ trays monthly using state-of-the-art machinery and 100% recycled materials. Our commitment to quality, sustainability, and customer satisfaction remains at the heart of everything we do.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Owner Section -->
+    <section class="owner-section">
+        <div class="container">
+            <h2 class="section-title">Meet Our Founder</h2>
+            <p class="section-subtitle">The visionary behind Ecopulp Packaging Supplies</p>
+            
+            <div class="owner-card">
+                <div class="owner-photo">
+                    <i class="fas fa-user"></i>
+                </div>
+                <div class="owner-info">
+                    <h2>Joan Lim</h2>
+                    <p class="title">Founder & CEO</p>
+                    <p>With over 13 years of experience in the packaging industry, Joan Lim has dedicated his career to creating sustainable solutions for the agricultural sector. His passion for environmental conservation and commitment to supporting local farmers drove her to establish Ecopulp Packaging Supplies.</p>
+                    <p>Under his leadership, the company has grown from a small operation to a major player in the Philippine egg tray industry.</p>
+                    <p class="quote">"Our mission is simple: to provide the best quality egg trays while protecting our environment. Every tray we produce is a step towards a more sustainable future."</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Our Values -->
+    <section class="values-section">
+        <div class="container">
+            <h2 class="section-title">Our Core Values</h2>
+            <p class="section-subtitle">The principles that guide everything we do</p>
+            
+            <div class="values-grid">
+                <div class="value-card">
+                    <div class="value-icon">
+                        <i class="fas fa-leaf"></i>
+                    </div>
+                    <h3>Sustainability</h3>
+                    <p>We use 100% recycled materials and sustainable manufacturing processes to minimize our environmental impact.</p>
+                </div>
+                <div class="value-card">
+                    <div class="value-icon">
+                        <i class="fas fa-medal"></i>
+                    </div>
+                    <h3>Quality Excellence</h3>
+                    <p>Every product undergoes rigorous quality control to ensure maximum protection for your eggs.</p>
+                </div>
+                <div class="value-card">
+                    <div class="value-icon">
+                        <i class="fas fa-handshake"></i>
+                    </div>
+                    <h3>Customer Focus</h3>
+                    <p>We build lasting relationships with our clients through exceptional service and reliable delivery.</p>
+                </div>
+                <div class="value-card">
+                    <div class="value-icon">
+                        <i class="fas fa-lightbulb"></i>
+                    </div>
+                    <h3>Innovation</h3>
+                    <p>We continuously improve our products and processes to meet evolving market needs.</p>
+                </div>
+                <div class="value-card">
+                    <div class="value-icon">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <h3>Community</h3>
+                    <p>We support local farmers and contribute to the growth of the Philippine poultry industry.</p>
+                </div>
+                <div class="value-card">
+                    <div class="value-icon">
+                        <i class="fas fa-check-double"></i>
+                    </div>
+                    <h3>Integrity</h3>
+                    <p>We operate with transparency and honesty in all our business dealings.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stats Section -->
+    <section class="stats-section">
+        <div class="container">
+            <div class="stats-grid">
+                <div class="stat-item">
+                    <div class="stat-number">10+</div>
+                    <div class="stat-label">Years in Business</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">500K+</div>
+                    <div class="stat-label">Trays Monthly</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">200+</div>
+                    <div class="stat-label">Happy Clients</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">50+</div>
+                    <div class="stat-label">Team Members</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Company Timeline -->
+    <section class="timeline-section">
+        <div class="container">
+            <h2 class="section-title">Our Journey</h2>
+            <p class="section-subtitle">Milestones in our growth story</p>
+            
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <span class="timeline-year">2012</span>
+                        <h3>The Beginning</h3>
+                        <p>Joan Lim established Ecopulp Packaging Supplies with a single molding machine and a team of 2+ dedicated workers.</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <span class="timeline-year">2013</span>
+                        <h3>First Major Expansion</h3>
+                        <p>Expanded production capacity with new machinery and moved to a larger facility in RAKA Compound Tuguegarao City.</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <span class="timeline-year">2016</span>
+                        <h3>100th Client</h3>
+                        <p>Reached the milestone of 100 regular clients, establishing ourselves as a trusted supplier in the industry.</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <span class="timeline-year">2019</span>
+                        <h3>Eco Certification</h3>
+                        <p>Received environmental certification for sustainable manufacturing practices and 100% recyclable products.</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <span class="timeline-year">2022</span>
+                        <h3>Digital Transformation</h3>
+                        <p>Launched online ordering platform to serve customers nationwide with convenient digital solutions.</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <span class="timeline-year">2025</span>
+                        <h3>500K+ Monthly Production</h3>
+                        <p>Achieved production milestone of 500,000+ trays monthly, serving 200+ clients across Region 2, Cagayan Valley, Philippines.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Certifications -->
+    <section class="certifications-section">
+        <div class="container">
+            <h2 class="section-title">Certifications & Awards</h2>
+            <p class="section-subtitle">Recognized for quality and sustainability</p>
+            
+            <div class="cert-grid">
+                <div class="cert-badge">
+                    <i class="fas fa-leaf"></i>
+                    <span>Eco-Friendly Certified</span>
+                </div>
+                <div class="cert-badge">
+                    <i class="fas fa-check-circle"></i>
+                    <span>ISO ____</span>
+                </div>
+                <div class="cert-badge">
+                    <i class="fas fa-award"></i>
+                    <span>DTI Excellence Award</span>
+                </div>
+                <div class="cert-badge">
+                    <i class="fas fa-recycle"></i>
+                    <span>100% Recyclable</span>
+                </div>
+                <div class="cert-badge">
+                    <i class="fas fa-shield-alt"></i>
+                    <span>FDA Approved</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section">
+        <div class="container">
+            <div class="cta-content">
+                <h2>Ready to Partner with Us?</h2>
+                <p>Join hundreds of satisfied customers who trust LimTray for their packaging needs</p>
+                <div class="cta-buttons">
+                    <a href="contact.html" class="btn btn-primary">Contact Us</a>
+                    <a href="products.html" class="btn btn-secondary">View Products</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <h3>About Ecopulp Packaging Supplies</h3>
+                    <p>Leading manufacturer of eco-friendly egg trays and packaging solutions Nationwide. Owned and operated by Joan Lim since 2012.</p>
+                    <div class="social-links">
+                        <a href="#" title="Facebook"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" title="Twitter"><i class="fab fa-twitter"></i></a>
+                        <a href="#" title="Instagram"><i class="fab fa-instagram"></i></a>
+                        <a href="#" title="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+                <div class="footer-col">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="products.html">Products</a></li>
+                        <li><a href="orders.html">Order Online</a></li>
+                        <li><a href="logistics.html">Logistics & Delivery</a></li>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h3>Customer Service</h3>
+                    <ul>
+                        <li><a href="faq.html">FAQs</a></li>
+                        <li><a href="shipping.html">Shipping Policy</a></li>
+                        <li><a href="returns.html">Returns & Refunds</a></li>
+                        <li><a href="terms.html">Terms & Conditions</a></li>
+                        <li><a href="privacy.html">Privacy Policy</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h3>Contact Info</h3>
+                    <ul class="contact-info">
+                        <li><i class="fas fa-map-marker-alt"></i> JAKA Compound Carig Norte, Tuguegarao City, Cagayan, Philippines</li>
+                        <li><i class="fas fa-phone"></i> +63 915 674 7277</li>
+                        <li><i class="fas fa-envelope"></i> limjoanbcbp19@gmail.com</li>
+                        <li><i class="fas fa-clock"></i> Mon-Sat: 6:00 AM - 6:00 PM</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 Ecopulp Packaging Supplies. All Rights Reserved. | Owned by Joan Lim</p>
+                <div class="payment-methods">
+                    <span>Payment Methods:</span>
+                    <i class="fab fa-cc-visa"></i>
+                    <i class="fab fa-cc-mastercard"></i>
+                    <i class="fab fa-paypal"></i>
+                    <i class="fas fa-money-bill-wave"></i>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+</body>
+</html>

@@ -1,0 +1,485 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us - Ecopulp Packaging Supplies</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        .contact-section {
+            padding: 60px 0;
+        }
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1fr 1.5fr;
+            gap: 50px;
+        }
+        .contact-info-cards {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+        .contact-card {
+            background: white;
+            border-radius: 16px;
+            padding: 30px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            display: flex;
+            align-items: flex-start;
+            gap: 20px;
+            transition: all 0.3s ease;
+        }
+        .contact-card:hover {
+            transform: translateX(10px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+        }
+        .contact-card-icon {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, #4CAF50, #2E7D32);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+        .contact-card-icon i {
+            font-size: 1.5rem;
+            color: white;
+        }
+        .contact-card-content h3 {
+            font-size: 1.1rem;
+            margin-bottom: 8px;
+            color: #333;
+        }
+        .contact-card-content p {
+            color: #666;
+            margin-bottom: 5px;
+        }
+        .contact-card-content a {
+            color: #2E7D32;
+            font-weight: 500;
+        }
+        .contact-card-content a:hover {
+            text-decoration: underline;
+        }
+        .contact-form-container {
+            background: white;
+            border-radius: 16px;
+            padding: 40px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+        .contact-form-container h2 {
+            margin-bottom: 10px;
+            color: #333;
+        }
+        .contact-form-container > p {
+            color: #666;
+            margin-bottom: 30px;
+        }
+        .map-section {
+            padding: 0 0 60px;
+        }
+        .map-container {
+            background: #F5F5F5;
+            border-radius: 16px;
+            height: 400px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+        }
+        .map-placeholder {
+            text-align: center;
+            color: #666;
+        }
+        .map-placeholder i {
+            font-size: 4rem;
+            color: #2E7D32;
+            margin-bottom: 20px;
+        }
+        .social-section {
+            background: #F5F5F5;
+            padding: 60px 0;
+        }
+        .social-grid {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+        }
+        .social-card {
+            background: white;
+            padding: 30px 50px;
+            border-radius: 12px;
+            text-align: center;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+        }
+        .social-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+        }
+        .social-card i {
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+        }
+        .social-card.facebook i { color: #1877F2; }
+        .social-card.twitter i { color: #1DA1F2; }
+        .social-card.instagram i { color: #E4405F; }
+        .social-card.linkedin i { color: #0A66C2; }
+        .social-card h4 {
+            margin-bottom: 5px;
+        }
+        .social-card p {
+            color: #666;
+            font-size: 0.9rem;
+        }
+        .faq-preview {
+            padding: 60px 0;
+        }
+        .faq-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+        }
+        .faq-item {
+            background: white;
+            border-radius: 12px;
+            padding: 25px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+        .faq-item h4 {
+            color: #2E7D32;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .faq-item p {
+            color: #666;
+            font-size: 0.95rem;
+        }
+        @media (max-width: 768px) {
+            .contact-grid {
+                grid-template-columns: 1fr;
+            }
+            .social-grid {
+                flex-wrap: wrap;
+            }
+            .faq-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Top Bar -->
+    <div class="top-bar">
+        <div class="container">
+            <div class="top-bar-left">
+                <span><i class="fas fa-phone"></i> +63 915 674 7277</span>
+                <span><i class="fas fa-envelope"></i> limjoanbcbp19@gmail.com</span>
+            </div>
+            <div class="top-bar-right">
+                <a href="login.html"><i class="fas fa-user"></i> Sign In</a>
+                <a href="register.html" class="btn-join">Join Free</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <div class="logo">
+                <a href="index.html">
+                    <div class="logo-text">
+                        <span class="logo-icon"><i class="fas fa-egg"></i></span>
+                        <span class="logo-name">Ecopulp</span>
+                    </div>
+                </a>
+            </div>
+            <nav class="main-nav">
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="products.html">Products</a></li>
+                    <li><a href="orders.html">Order Online</a></li>
+                    <li><a href="logistics.html">Logistics & Delivery</a></li>
+                    <li><a href="about.html">About Us</a></li>
+                    <li><a href="contact.html" class="active">Contact</a></li>
+                </ul>
+            </nav>
+            <div class="header-actions">
+                <a href="cart.html" class="cart-icon"><i class="fas fa-shopping-cart"></i><span class="cart-count">0</span></a>
+                <button class="mobile-menu-btn" title="Open menu"><i class="fas fa-bars"></i></button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Page Header -->
+    <div class="page-header">
+        <div class="container">
+            <h1>Contact Us</h1>
+            <p>We'd love to hear from you. Get in touch with our team.</p>
+            <div class="breadcrumb">
+                <a href="index.html">Home</a> / <span>Contact</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Contact Section -->
+    <section class="contact-section">
+        <div class="container">
+            <div class="contact-grid">
+                <!-- Contact Info -->
+                <div class="contact-info-cards">
+                    <div class="contact-card">
+                        <div class="contact-card-icon">
+                            <i class="fas fa-map-marker-alt"></i>
+                        </div>
+                        <div class="contact-card-content">
+                            <h3>Visit Our Factory</h3>
+                            <p>RaKa Compound, Carig Norte</p>
+                            <p> Tuguegarao City</p>
+                            <p>Cagayan, Philippines</p>
+                        </div>
+                    </div>
+                    <div class="contact-card">
+                        <div class="contact-card-icon">
+                            <i class="fas fa-phone-alt"></i>
+                        </div>
+                        <div class="contact-card-content">
+                            <h3>Call Us</h3>
+                            <p>Main: <a href="tel:+639123456789">+63 912 345 6789</a></p>
+                            <p>Office: <a href="tel:+6328765432">+63 2 876 5432</a></p>
+                            <p class="contact-hours">Mon-Sat: 8:00 AM - 6:00 PM</p>
+                        </div>
+                    </div>
+                    <div class="contact-card">
+                        <div class="contact-card-icon">
+                            <i class="fas fa-envelope"></i>
+                        </div>
+                        <div class="contact-card-content">
+                            <h3>Email Us</h3>
+                            <p>General: <a href="mailto:info@limtray.com">info@limtray.com</a></p>
+                            <p>Sales: <a href="mailto:sales@limtray.com">sales@limtray.com</a></p>
+                            <p>Support: <a href="mailto:support@limtray.com">support@limtray.com</a></p>
+                        </div>
+                    </div>
+                    <div class="contact-card">
+                        <div class="contact-card-icon">
+                            <i class="fas fa-headset"></i>
+                        </div>
+                        <div class="contact-card-content">
+                            <h3>Live Chat</h3>
+                            <p>Chat with our support team</p>
+                            <p>Available during business hours</p>
+                            <a href="#" class="start-chat-btn">Start Chat</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Contact Form -->
+                <div class="contact-form-container">
+                    <h2><i class="fas fa-paper-plane icon-green"></i>Send Us a Message</h2>
+                    <p>Fill out the form below and we'll get back to you within 24 hours</p>
+                    
+                    <form id="contactForm">
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="name">Full Name *</label>
+                                <input type="text" id="name" name="name" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="company">Company Name</label>
+                                <input type="text" id="company" name="company">
+                            </div>
+                        </div>
+                        
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="email">Email Address *</label>
+                                <input type="email" id="email" name="email" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="phone">Phone Number *</label>
+                                <input type="tel" id="phone" name="phone" required>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="subject">Subject *</label>
+                            <select id="subject" name="subject" required>
+                                <option value="">Select a topic</option>
+                                <option value="general">General Inquiry</option>
+                                <option value="quote">Request a Quote</option>
+                                <option value="order">Order Status</option>
+                                <option value="custom">Custom Order</option>
+                                <option value="bulk">Bulk Order</option>
+                                <option value="partnership">Business Partnership</option>
+                                <option value="feedback">Feedback</option>
+                                <option value="other">Other</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="message">Message *</label>
+                            <textarea id="message" name="message" rows="5" placeholder="Please describe your inquiry in detail..." required></textarea>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="newsletter-label">
+                                <input type="checkbox" name="newsletter" class="newsletter-checkbox">
+                                Subscribe to our newsletter for updates and promotions
+                            </label>
+                        </div>
+
+                        <button type="submit" class="btn btn-primary contact-submit-btn">
+                            <i class="fas fa-paper-plane"></i> Send Message
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Map Section -->
+    <section class="map-section">
+        <div class="container">
+            <div class="map-container">
+                <div class="map-placeholder">
+                    <i class="fas fa-map-marked-alt"></i>
+                    <h3>Our Location</h3>
+                    <p>123 Industrial Avenue, Bagumbayan, Quezon City</p>
+                    <a href="https://maps.google.com" target="_blank" rel="noopener" class="btn btn-primary map-btn">
+                        <i class="fas fa-directions"></i> Get Directions
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Social Media -->
+    <section class="social-section">
+        <div class="container">
+            <h2 class="section-title">Connect With Us</h2>
+            <p class="section-subtitle">Follow us on social media for updates and news</p>
+            
+            <div class="social-grid">
+                <a href="#" class="social-card facebook">
+                    <i class="fab fa-facebook-f"></i>
+                    <h4>Facebook</h4>
+                    <p>@LimTrayManufacturing</p>
+                </a>
+                <a href="#" class="social-card twitter">
+                    <i class="fab fa-twitter"></i>
+                    <h4>Twitter</h4>
+                    <p>@LimTrayPH</p>
+                </a>
+                <a href="#" class="social-card instagram">
+                    <i class="fab fa-instagram"></i>
+                    <h4>Instagram</h4>
+                    <p>@limtray_official</p>
+                </a>
+                <a href="#" class="social-card linkedin">
+                    <i class="fab fa-linkedin-in"></i>
+                    <h4>LinkedIn</h4>
+                    <p>LimTray Manufacturing</p>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Preview -->
+    <section class="faq-preview">
+        <div class="container">
+            <h2 class="section-title">Frequently Asked Questions</h2>
+            <p class="section-subtitle">Quick answers to common questions</p>
+            
+            <div class="faq-grid">
+                <div class="faq-item">
+                    <h4><i class="fas fa-question-circle"></i> What is your minimum order quantity?</h4>
+                    <p>Our minimum order is 100 trays for standard products. For custom orders, minimums may vary. Contact us for specific requirements.</p>
+                </div>
+                <div class="faq-item">
+                    <h4><i class="fas fa-question-circle"></i> How long does delivery take?</h4>
+                    <p>Metro Manila orders are delivered within 1-2 business days. Provincial deliveries take 3-7 days depending on location.</p>
+                </div>
+                <div class="faq-item">
+                    <h4><i class="fas fa-question-circle"></i> Do you offer custom branding?</h4>
+                    <p>Yes! We offer custom printed trays with your logo and branding. Contact us for design options and pricing.</p>
+                </div>
+                <div class="faq-item">
+                    <h4><i class="fas fa-question-circle"></i> What payment methods do you accept?</h4>
+                    <p>We accept bank transfers, GCash, PayPal, and cash on delivery (Metro Manila only).</p>
+                </div>
+            </div>
+            
+            <div class="faq-center">
+                <a href="faq.html" class="btn btn-outline">View All FAQs</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <h3>About LimTray</h3>
+                    <p>Leading manufacturer of eco-friendly egg trays and packaging solutions in the Philippines. Owned and operated by Joan Lim since 2010.</p>
+                    <div class="social-links">
+                        <a href="#" title="Facebook"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" title="Twitter"><i class="fab fa-twitter"></i></a>
+                        <a href="#" title="Instagram"><i class="fab fa-instagram"></i></a>
+                        <a href="#" title="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+                <div class="footer-col">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="products.html">Products</a></li>
+                        <li><a href="orders.html">Order Online</a></li>
+                        <li><a href="logistics.html">Logistics & Delivery</a></li>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h3>Customer Service</h3>
+                    <ul>
+                        <li><a href="faq.html">FAQs</a></li>
+                        <li><a href="shipping.html">Shipping Policy</a></li>
+                        <li><a href="returns.html">Returns & Refunds</a></li>
+                        <li><a href="terms.html">Terms & Conditions</a></li>
+                        <li><a href="privacy.html">Privacy Policy</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h3>Contact Info</h3>
+                    <ul class="contact-info">
+                        <li><i class="fas fa-map-marker-alt"></i> 123 Industrial Ave, Quezon City, Philippines</li>
+                        <li><i class="fas fa-phone"></i> +63 912 345 6789</li>
+                        <li><i class="fas fa-envelope"></i> info@limtray.com</li>
+                        <li><i class="fas fa-clock"></i> Mon-Sat: 8:00 AM - 6:00 PM</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 Ecopulp Packaging Supplies. All Rights Reserved. | Owned by Joan Lim</p>
+                <div class="payment-methods">
+                    <span>Payment Methods:</span>
+                    <i class="fab fa-cc-visa"></i>
+                    <i class="fab fa-cc-mastercard"></i>
+                    <i class="fab fa-paypal"></i>
+                    <i class="fas fa-money-bill-wave"></i>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+</body>
+</html>

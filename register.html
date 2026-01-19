@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register - LimTray Manufacturing</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <div class="logo">
+                <a href="index.html">
+                    <div class="logo-text">
+                        <span class="logo-icon"><i class="fas fa-egg"></i></span>
+                        <span class="logo-name">LimTray</span>
+                    </div>
+                </a>
+            </div>
+            <nav class="main-nav">
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="products.html">Products</a></li>
+                    <li><a href="orders.html">Order Online</a></li>
+                    <li><a href="logistics.html">Logistics & Delivery</a></li>
+                    <li><a href="about.html">About Us</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </nav>
+            <div class="header-actions">
+                <a href="cart.html" class="cart-icon"><i class="fas fa-shopping-cart"></i><span class="cart-count">0</span></a>
+                <button class="mobile-menu-btn" title="Open mobile menu"><i class="fas fa-bars"></i></button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Register Section -->
+    <section class="auth-section auth-section-pad">
+        <div class="auth-container auth-container-max">
+            <div class="auth-card">
+                <div class="auth-header-center">
+                    <div class="auth-avatar">
+                        <i class="fas fa-user-plus auth-avatar-icon"></i>
+                    </div>
+                    <h2 class="auth-title">Create Account</h2>
+                    <p class="auth-subtitle">Join LimTray and start ordering today</p>
+                </div>
+                
+                <form id="registerForm">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="firstName">First Name *</label>
+                            <input type="text" id="firstName" name="firstName" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="lastName">Last Name *</label>
+                            <input type="text" id="lastName" name="lastName" required>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="company">Company / Farm Name</label>
+                        <input type="text" id="company" name="company" placeholder="Optional">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="email">Email Address *</label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="phone">Phone Number *</label>
+                        <input type="tel" id="phone" name="phone" placeholder="+63 XXX XXX XXXX" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="accountType">Account Type *</label>
+                        <select id="accountType" name="accountType" required>
+                            <option value="">Select account type</option>
+                            <option value="individual">Individual Buyer</option>
+                            <option value="farm">Poultry Farm</option>
+                            <option value="retailer">Retailer / Distributor</option>
+                            <option value="business">Business / Company</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="password">Password *</label>
+                            <input type="password" id="password" name="password" required minlength="8">
+                        </div>
+                        <div class="form-group">
+                            <label for="confirmPassword">Confirm Password *</label>
+                            <input type="password" id="confirmPassword" name="confirmPassword" required>
+                        </div>
+                    </div>
+                    
+                    <div class="auth-password-info">
+                        <p class="auth-password-info-text">
+                            <i class="fas fa-info-circle auth-password-info-icon"></i>
+                            Password must be at least 8 characters with uppercase, lowercase, and numbers.
+                        </p>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label class="auth-remember-label auth-terms-label">
+                            <input type="checkbox" name="terms" required class="auth-terms-checkbox">
+                            <span>I agree to the <a href="terms.html" class="auth-link-green">Terms & Conditions</a> and <a href="privacy.html" class="auth-link-green">Privacy Policy</a></span>
+                        </label>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label class="newsletter-label">
+                            <input type="checkbox" name="newsletter" class="newsletter-checkbox">
+                            Subscribe to newsletter for updates and promotions
+                        </label>
+                    </div>
+                    
+                    <button type="submit" class="btn btn-primary auth-submit-btn">
+                        <i class="fas fa-user-plus"></i> Create Account
+                    </button>
+                </form>
+                
+                <div class="auth-divider">
+                    <span>or sign up with</span>
+                </div>
+                
+                <div class="auth-social-row">
+                    <button class="auth-social-btn"><i class="fab fa-google auth-google-icon"></i> Google</button>
+                    <button class="auth-social-btn"><i class="fab fa-facebook-f auth-facebook-icon"></i> Facebook</button>
+                </div>
+                
+                <div class="auth-footer">
+                    Already have an account? <a href="login.html">Sign in</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer (minimal) -->
+    <footer class="auth-footer-minimal">
+        <p>&copy; 2026 LimTray Manufacturing. All Rights Reserved. | Owned by Joan Lim</p>
+    </footer>
+
+    <script src="js/main.js"></script>
+</body>
+</html>

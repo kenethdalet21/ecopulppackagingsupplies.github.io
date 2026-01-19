@@ -1,0 +1,554 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shopping Cart - Ecopulp Packaging Supplies</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        .cart-section {
+            padding: 60px 0;
+            min-height: 60vh;
+        }
+        .cart-grid {
+            display: grid;
+            grid-template-columns: 1fr 350px;
+            gap: 40px;
+        }
+        .cart-items-container {
+            background: white;
+            border-radius: 16px;
+            padding: 30px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+        .cart-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-bottom: 20px;
+            border-bottom: 2px solid #E0E0E0;
+            margin-bottom: 20px;
+        }
+        .cart-header h2 {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .cart-item {
+            display: grid;
+            grid-template-columns: 100px 1fr 150px 120px 50px;
+            gap: 20px;
+            align-items: center;
+            padding: 20px 0;
+            border-bottom: 1px solid #E0E0E0;
+        }
+        .cart-item-image {
+            width: 100px;
+            height: 100px;
+            background: #F5F5F5;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .cart-item-image i {
+            font-size: 2.5rem;
+            color: #2E7D32;
+        }
+        .cart-item-info h4 {
+            margin-bottom: 5px;
+            color: #333;
+        }
+        .cart-item-info p {
+            color: #666;
+            font-size: 0.9rem;
+        }
+        .cart-item-info .unit-price {
+            color: #2E7D32;
+            font-weight: 600;
+            margin-top: 5px;
+        }
+        .quantity-selector {
+            display: flex;
+            align-items: center;
+            border: 2px solid #E0E0E0;
+            border-radius: 8px;
+            overflow: hidden;
+        }
+        .quantity-selector button {
+            width: 40px;
+            height: 40px;
+            border: none;
+            background: #F5F5F5;
+            cursor: pointer;
+            font-size: 1.2rem;
+            transition: all 0.3s ease;
+        }
+        .quantity-selector button:hover {
+            background: #2E7D32;
+            color: white;
+        }
+        .quantity-selector input {
+            width: 60px;
+            height: 40px;
+            border: none;
+            text-align: center;
+            font-size: 1rem;
+            font-weight: 500;
+        }
+        .cart-item-total {
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: #2E7D32;
+            text-align: right;
+        }
+        .remove-btn {
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            color: #ccc;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        .remove-btn:hover {
+            color: #F44336;
+        }
+        .cart-summary {
+            background: white;
+            border-radius: 16px;
+            padding: 30px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            height: fit-content;
+            position: sticky;
+            top: 100px;
+        }
+        .cart-summary h3 {
+            margin-bottom: 25px;
+            padding-bottom: 15px;
+            border-bottom: 2px solid #E0E0E0;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .summary-row {
+            display: flex;
+            justify-content: space-between;
+            padding: 12px 0;
+            color: #666;
+        }
+        .summary-row.total {
+            border-top: 2px solid #E0E0E0;
+            margin-top: 15px;
+            padding-top: 20px;
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: #2E7D32;
+        }
+        .promo-code {
+            margin: 25px 0;
+        }
+        .promo-code input {
+            width: 100%;
+            padding: 14px;
+            border: 2px solid #E0E0E0;
+            border-radius: 8px;
+            margin-bottom: 10px;
+        }
+        .promo-code button {
+            width: 100%;
+        }
+        .empty-cart {
+            text-align: center;
+            padding: 60px 20px;
+        }
+        .empty-cart i {
+            font-size: 5rem;
+            color: #E0E0E0;
+            margin-bottom: 20px;
+        }
+        .empty-cart h3 {
+            margin-bottom: 10px;
+            color: #333;
+        }
+        .empty-cart p {
+            color: #666;
+            margin-bottom: 30px;
+        }
+        .continue-shopping {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            color: #2E7D32;
+            font-weight: 500;
+            margin-top: 20px;
+        }
+        .continue-shopping:hover {
+            text-decoration: underline;
+        }
+        @media (max-width: 1024px) {
+            .cart-grid {
+                grid-template-columns: 1fr;
+            }
+            .cart-summary {
+                position: static;
+            }
+        }
+        @media (max-width: 768px) {
+            .cart-item {
+                grid-template-columns: 80px 1fr;
+                gap: 15px;
+            }
+            .cart-item-image {
+                width: 80px;
+                height: 80px;
+            }
+            .quantity-selector,
+            .cart-item-total,
+            .remove-btn {
+                grid-column: 2;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Top Bar -->
+    <div class="top-bar">
+        <div class="container">
+            <div class="top-bar-left">
+                <span><i class="fas fa-phone"></i> +63 912 345 6789</span>
+                <span><i class="fas fa-envelope"></i> info@limtray.com</span>
+            </div>
+            <div class="top-bar-right">
+                <a href="login.html"><i class="fas fa-user"></i> Sign In</a>
+                <a href="register.html" class="btn-join">Join Free</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <div class="logo">
+                <a href="index.html">
+                    <div class="logo-text">
+                        <span class="logo-icon"><i class="fas fa-egg"></i></span>
+                        <span class="logo-name">LimTray</span>
+                    </div>
+                </a>
+            </div>
+            <nav class="main-nav">
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="products.html">Products</a></li>
+                    <li><a href="orders.html">Order Online</a></li>
+                    <li><a href="logistics.html">Logistics & Delivery</a></li>
+                    <li><a href="about.html">About Us</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </nav>
+            <div class="header-actions">
+                <a href="cart.html" class="cart-icon"><i class="fas fa-shopping-cart"></i><span class="cart-count">0</span></a>
+                <button class="mobile-menu-btn" title="Open mobile menu"><i class="fas fa-bars"></i></button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Page Header -->
+    <div class="page-header">
+        <div class="container">
+            <h1>Shopping Cart</h1>
+            <p>Review your items before checkout</p>
+            <div class="breadcrumb">
+                <a href="index.html">Home</a> / <span>Cart</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Cart Section -->
+    <section class="cart-section">
+        <div class="container">
+            <div class="cart-grid">
+                <!-- Cart Items -->
+                <div class="cart-items-container">
+                    <div class="cart-header">
+                        <h2><i class="fas fa-shopping-cart cart-icon-green"></i> Your Cart</h2>
+                        <button class="btn btn-outline cart-clear-btn" onclick="clearCart()">Clear All</button>
+                    </div>
+                    
+                    <div class="cart-items" id="cartItems">
+                        <!-- Cart items will be dynamically loaded -->
+                        <div class="empty-cart" id="emptyCart">
+                            <i class="fas fa-shopping-cart"></i>
+                            <h3>Your cart is empty</h3>
+                            <p>Looks like you haven't added any items to your cart yet.</p>
+                            <a href="products.html" class="btn btn-primary">Browse Products</a>
+                        </div>
+                    </div>
+                    
+                    <a href="products.html" class="continue-shopping">
+                        <i class="fas fa-arrow-left"></i> Continue Shopping
+                    </a>
+                </div>
+
+                <!-- Cart Summary -->
+                <div class="cart-summary">
+                    <h3><i class="fas fa-receipt cart-icon-green"></i> Order Summary</h3>
+                    
+                    <div class="summary-row">
+                        <span>Subtotal</span>
+                        <span id="cartSubtotal">₱0.00</span>
+                    </div>
+                    <div class="summary-row">
+                        <span>Shipping</span>
+                        <span id="cartShipping">Calculated at checkout</span>
+                    </div>
+                    <div class="summary-row">
+                        <!-- Tax removed -->
+                    </div>
+                    <div class="summary-row total">
+                        <span>Total</span>
+                        <span id="cartTotal">₱0.00</span>
+                    </div>
+
+                    <div class="promo-code">
+                        <input type="text" placeholder="Enter promo code" id="promoCode">
+                        <button class="btn btn-outline" onclick="applyPromo()">Apply Code</button>
+                    </div>
+
+                        <a href="orders.html" class="btn btn-primary cart-checkout-btn" id="proceedCheckoutBtn">
+                            <i class="fas fa-lock"></i> Proceed to Checkout
+                        </a>
+
+                    <div class="cart-secure-row">
+                        <p class="cart-secure-text"><i class="fas fa-shield-alt cart-icon-green"></i> Secure checkout
+                        </p>
+                        <div class="cart-payment-icons">
+                            <i class="fab fa-cc-visa cart-visa-icon"></i>
+                            <i class="fab fa-cc-mastercard cart-mastercard-icon"></i>
+                            <i class="fab fa-paypal cart-paypal-icon"></i>
+                        </div>
+                    </div>
+
+                    <div class="cart-free-shipping-box">
+                        <h4 class="cart-free-shipping-title"><i class="fas fa-truck"></i> Free Shipping</h4>
+                        <p class="cart-free-shipping-desc">Orders over ₱5,000 qualify for free shipping within Metro Manila!</p>
+                    </div>
+
+                    <div class="cart-pricing-box">
+                        <h4 class="cart-pricing-title"><i class="fas fa-tags"></i> Pricing Options</h4>
+                        <p class="cart-pricing-pertray"><i class="fas fa-egg"></i> Per Tray: ₱4.00/tray</p>
+                        <p class="cart-pricing-bundle"><i class="fas fa-box-open"></i> 1 Bundle = 120 pcs</p>
+                        <ul class="cart-pricing-list">
+                            <li>1-50 bundles: ₱480/bundle</li>
+                            <li>51-100 bundles: <span class="cart-pricing-green">₱450/bundle</span></li>
+                            <li>101-200 bundles: <span class="cart-pricing-orange">Flexible Price</span></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <h3>About LimTray</h3>
+                    <p>Leading manufacturer of eco-friendly egg trays and packaging solutions in the Philippines. Owned and operated by Joan Lim since 2010.</p>
+                    <div class="social-links">
+                        <a href="#" title="Facebook"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" title="Twitter"><i class="fab fa-twitter"></i></a>
+                        <a href="#" title="Instagram"><i class="fab fa-instagram"></i></a>
+                        <a href="#" title="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+                <div class="footer-col">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="products.html">Products</a></li>
+                        <li><a href="orders.html">Order Online</a></li>
+                        <li><a href="logistics.html">Logistics & Delivery</a></li>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h3>Customer Service</h3>
+                    <ul>
+                        <li><a href="faq.html">FAQs</a></li>
+                        <li><a href="shipping.html">Shipping Policy</a></li>
+                        <li><a href="returns.html">Returns & Refunds</a></li>
+                        <li><a href="terms.html">Terms & Conditions</a></li>
+                        <li><a href="privacy.html">Privacy Policy</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h3>Contact Info</h3>
+                    <ul class="contact-info">
+                        <li><i class="fas fa-map-marker-alt"></i> 123 Industrial Ave, Quezon City, Philippines</li>
+                        <li><i class="fas fa-phone"></i> +63 912 345 6789</li>
+                        <li><i class="fas fa-envelope"></i> info@limtray.com</li>
+                        <li><i class="fas fa-clock"></i> Mon-Sat: 8:00 AM - 6:00 PM</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 Ecopulp Packaging Supplies. All Rights Reserved. | Owned by Joan Lim</p>
+                <div class="payment-methods">
+                    <span>Payment Methods:</span>
+                    <i class="fab fa-cc-visa"></i>
+                    <i class="fab fa-cc-mastercard"></i>
+                    <i class="fab fa-paypal"></i>
+                    <i class="fas fa-money-bill-wave"></i>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+    <script>
+        const PCS_PER_BUNDLE = 120;  // 1 Bundle = 120 pcs
+        
+        // Load cart on page load
+        document.addEventListener('DOMContentLoaded', function() {
+            loadCart();
+        });
+
+        function loadCart() {
+            const cartItems = JSON.parse(localStorage.getItem('limtray_cart')) || [];
+            const cartContainer = document.getElementById('cartItems');
+            const emptyCart = document.getElementById('emptyCart');
+            
+            if (cartItems.length === 0) {
+                emptyCart.style.display = 'block';
+                updateSummary(0);
+                return;
+            }
+            
+            emptyCart.style.display = 'none';
+            
+            let html = '';
+            cartItems.forEach(item => {
+                const totalPrice = item.price * item.quantity;
+                const isBundle = item.type === 'bundle' || item.id.includes('bundle');
+                const totalPcs = isBundle ? item.quantity * (item.pcsPerBundle || PCS_PER_BUNDLE) : item.quantity;
+                const unitLabel = isBundle ? 'bundle' : 'tray';
+                const sku = isBundle ? 'LT-30CELL-BUNDLE' : 'LT-30CELL';
+                
+                let pcsInfo = '';
+                if (isBundle) {
+                    pcsInfo = `<p style="color: #1565C0; font-size: 0.8rem;">
+                        <i class="fas fa-box-open"></i> ${totalPcs.toLocaleString()} pcs total (${item.quantity} × 120)
+                    </p>`;
+                }
+                
+                const priceTier = isBundle ? (item.price <= 450 ? 'Bulk Rate' : 'Standard Rate') : 'Per Tray Rate';
+                const tierColor = isBundle ? (item.price <= 450 ? '#2E7D32' : '#666') : '#1976D2';
+                
+                html += `
+                    <div class="cart-item" data-id="${item.id}" data-price="${item.price}">
+                        <div class="cart-item-image">
+                            <i class="fas fa-egg"></i>
+                        </div>
+                        <div class="cart-item-info">
+                            <h4>${item.name}</h4>
+                            <p>SKU: ${sku}</p>
+                            <p class="unit-price">₱${item.price.toFixed(2)} per ${unitLabel}</p>
+                            ${pcsInfo}
+                            <p style="color: ${tierColor}; font-size: 0.8rem;">
+                                <i class="fas fa-tag"></i> ${priceTier}
+                            </p>
+                        </div>
+                        <div class="quantity-selector">
+                            <button onclick="updateQuantity('${item.id}', ${item.price}, ${item.quantity - 1})">-</button>
+                            <input type="number" value="${item.quantity}" min="1" onchange="updateQuantity('${item.id}', ${item.price}, this.value)">
+                            <button onclick="updateQuantity('${item.id}', ${item.price}, ${item.quantity + 1})">+</button>
+                        </div>
+                        <div class="cart-item-total">₱${totalPrice.toFixed(2)}</div>
+                        <button class="remove-btn" onclick="removeItem('${item.id}', ${item.price})">&times;</button>
+                    </div>
+                `;
+            });
+            
+            cartContainer.innerHTML = html + emptyCart.outerHTML;
+            
+            const subtotal = cartItems.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+            updateSummary(subtotal);
+        }
+
+        function updateQuantity(id, price, quantity) {
+            let cartItems = JSON.parse(localStorage.getItem('limtray_cart')) || [];
+            const item = cartItems.find(i => i.id === id && i.price === price);
+            
+            if (item) {
+                if (quantity <= 0) {
+                    removeItem(id, price);
+                    return;
+                }
+                item.quantity = parseInt(quantity);
+                localStorage.setItem('limtray_cart', JSON.stringify(cartItems));
+                loadCart();
+                updateCartCount();
+            }
+        }
+
+        function removeItem(id, price) {
+            let cartItems = JSON.parse(localStorage.getItem('limtray_cart')) || [];
+            cartItems = cartItems.filter(item => !(item.id === id && item.price === price));
+            localStorage.setItem('limtray_cart', JSON.stringify(cartItems));
+            loadCart();
+            updateCartCount();
+            showNotification('Item removed from cart', 'success');
+        }
+
+        function clearCart() {
+            if (confirm('Are you sure you want to clear your cart?')) {
+                localStorage.setItem('limtray_cart', JSON.stringify([]));
+                loadCart();
+                updateCartCount();
+                showNotification('Cart cleared', 'success');
+            }
+        }
+
+        function updateSummary(subtotal) {
+            const shipping = subtotal > 0 ? (subtotal >= 5000 ? 0 : 150) : 0;
+            const total = subtotal + shipping;
+            document.getElementById('cartSubtotal').textContent = `₱${subtotal.toFixed(2)}`;
+            document.getElementById('cartShipping').textContent = shipping === 0 ? 'FREE' : `₱${shipping.toFixed(2)}`;
+            document.getElementById('cartTotal').textContent = `₱${total.toFixed(2)}`;
+        }
+
+        function applyPromo() {
+            const code = document.getElementById('promoCode').value.trim().toUpperCase();
+            
+            if (code === 'LIMTRAY10') {
+                showNotification('Promo code applied! 10% discount', 'success');
+                // Apply discount logic here
+            } else if (code === '') {
+                showNotification('Please enter a promo code', 'warning');
+            } else {
+                showNotification('Invalid promo code', 'error');
+            }
+        }
+
+        // Volume Discount Calculator
+        // Fixed pricing tiers for 30-Cell Egg Tray:
+        // 1-50 trays: ₱480 per tray
+        // 51-100 trays: ₱450 per tray
+        // 101-200 trays: ₱450 per tray
+        function getVolumeDiscountPrice(quantity, basePrice) {
+            // Price is already set at time of adding to cart based on quantity tier
+            // No additional calculation needed - just return as-is
+            return {
+                discountedPrice: basePrice,
+                totalPrice: basePrice * quantity,
+                savings: 0,
+                discountPercent: 0
+            };
+        }
+    </script>
+</body>
+</html>

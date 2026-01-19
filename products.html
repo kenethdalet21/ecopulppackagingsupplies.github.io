@@ -1,0 +1,435 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Products - Ecopulp Packaging Supplies</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Top Bar -->
+    <div class="top-bar">
+        <div class="container">
+            <div class="top-bar-left">
+                <span><i class="fas fa-phone"></i> +63 912 345 6789</span>
+                <span><i class="fas fa-envelope"></i> info@limtray.com</span>
+            </div>
+            <div class="top-bar-right">
+                <a href="login.html"><i class="fas fa-user"></i> Sign In</a>
+                <a href="register.html" class="btn-join">Join Free</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <div class="logo">
+                <a href="index.html">
+                    <div class="logo-text">
+                        <span class="logo-icon"><i class="fas fa-egg"></i></span>
+                        <span class="logo-name">LimTray</span>
+                    </div>
+                </a>
+            </div>
+            <nav class="main-nav">
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="products.html" class="active">Products</a></li>
+                    <li><a href="orders.html">Order Online</a></li>
+                    <li><a href="logistics.html">Logistics & Delivery</a></li>
+                    <li><a href="about.html">About Us</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </nav>
+            <div class="header-actions">
+                <a href="cart.html" class="cart-icon"><i class="fas fa-shopping-cart"></i><span class="cart-count">0</span></a>
+                <button class="mobile-menu-btn" title="Open mobile menu"><i class="fas fa-bars"></i></button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Page Header -->
+    <div class="page-header">
+        <div class="container">
+            <h1>Our Products</h1>
+            <p>Premium quality egg trays and packaging solutions</p>
+            <div class="breadcrumb">
+                <a href="index.html">Home</a> / <span>Products</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Products Section -->
+    <section class="products-section">
+        <div class="container">
+            <div class="products-grid product-main-grid">
+                <!-- Main Product Card -->
+                <div class="product-card product-card-main" data-category="standard" id="standard">
+                    <div class="product-card-image product-card-image-lg">
+                        <i class="fas fa-egg product-egg-icon"></i>
+                    </div>
+                    <div class="product-card-body">
+                        <h3>30-Cell Egg Tray</h3>
+                        <p class="product-desc">Premium eco-friendly pulp material, holds 30 eggs securely. Perfect for farms, retailers, and distributors.</p>
+                        
+                        <!-- Purchase Type Selector -->
+                        <div class="purchase-type-row">
+                            <label class="purchase-type-label">Choose Purchase Type:</label>
+                            <div class="purchase-type-btn-row">
+                                <button id="btnPerTray" onclick="setPurchaseType('tray')" class="purchase-type-btn">
+                                    <i class="fas fa-egg"></i> Per Tray
+                                </button>
+                                <button id="btnPerBundle" onclick="setPurchaseType('bundle')" class="purchase-type-btn purchase-type-btn-bundle">
+                                    <i class="fas fa-boxes"></i> Per Bundle
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- Per Tray Pricing (Hidden by default) -->
+                        <div id="perTraySection" class="per-tray-section per-tray-section-hide">
+                            <div class="per-tray-box">
+                                <h4 class="per-tray-title"><i class="fas fa-tag"></i> Per Tray Pricing</h4>
+                                <p class="per-tray-price">₱4.00 <span class="per-tray-unit">per tray</span></p>
+                            </div>
+                        </div>
+
+                        <!-- Per Bundle Pricing -->
+                        <div id="perBundleSection" class="per-bundle-section per-bundle-section-show">
+                            <div class="per-bundle-box">
+                                <h4 class="per-bundle-title"><i class="fas fa-tags"></i> Bundle Pricing</h4>
+                                <p class="per-bundle-desc"><i class="fas fa-box-open"></i> 1 Bundle = 120 pcs of trays</p>
+                                <table class="per-bundle-table">
+                                    <thead>
+                                        <tr class="per-bundle-table-header-row">
+                                            <th class="per-bundle-th-left">Quantity</th>
+                                            <th class="per-bundle-th-right">Price/Bundle</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td class="per-bundle-td">1 - 50 bundles</td>
+                                            <td class="per-bundle-td per-bundle-td-right">₱480.00</td>
+                                        </tr>
+                                        <tr class="per-bundle-row-save">
+                                            <td class="per-bundle-td">51 - 100 bundles</td>
+                                            <td class="per-bundle-td per-bundle-td-right per-bundle-td-save">₱450.00 <span class="per-bundle-save">SAVE!</span></td>
+                                        </tr>
+                                        <tr class="per-bundle-row-flex">
+                                            <td class="per-bundle-td">101 - 200 bundles</td>
+                                            <td class="per-bundle-td per-bundle-td-right per-bundle-td-flex">Flexible <span id="negotiateBtn" onclick="showFlexiblePriceInput()" class="per-bundle-negotiate">NEGOTIATE!</span> <span class="per-bundle-edit-note">(Click negotiate to edit)</span></td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+
+                        <!-- Quantity Selector -->
+                        <div class="qty-row">
+                            <label id="qtyLabel" class="qty-label">Select Quantity (Bundles):</label>
+                            <div class="qty-btn-row">
+                                <button onclick="decreaseQty()" class="qty-btn">-</button>
+                                <input type="number" id="productQty" value="1" min="1" max="200" class="qty-input" title="Select quantity" placeholder="Qty">
+                                <button onclick="increaseQty()" class="qty-btn">+</button>
+                            </div>
+                        </div>
+
+                        <!-- Flexible Price Input (for 101-200 bundles) -->
+                        <div id="flexiblePriceSection" class="flexible-price-section flexible-price-section-hide">
+                            <label class="flexible-price-label">
+                                <i class="fas fa-handshake"></i> Enter Your Negotiated Price (per bundle):
+                            </label>
+                            <div class="flexible-price-row">
+                                <span class="flexible-price-currency">₱</span>
+                                <input type="number" id="flexiblePrice" value="420" min="1" max="480" step="0.01" class="flexible-price-input" onchange="updatePriceDisplay()" oninput="updatePriceDisplay()" title="Enter your negotiated price per bundle" placeholder="Negotiated price">
+                                <button type="button" onclick="hideFlexiblePriceInput()" class="flexible-price-done-btn">Done</button>
+                            </div>
+                            <p class="flexible-price-note"><i class="fas fa-info-circle"></i> Contact us to negotiate your best price for bulk orders!</p>
+                        </div>
+
+                        <!-- Dynamic Price Display -->
+                        <div id="priceDisplay" class="price-display-box">
+                            <p class="price-display-label">Your Price</p>
+                            <p class="price-display-main">₱<span id="totalPrice">480.00</span></p>
+                            <p id="priceBreakdown" class="price-display-breakdown">(₱480.00 × 1 bundle = 120 pcs)</p>
+                        </div>
+
+                        <button class="btn btn-primary add-to-cart-btn" onclick="addToCartWithQty()">
+                            <i class="fas fa-cart-plus"></i> Add to Cart
+                        </button>
+                    </div>
+                </div>
+
+                </div>
+                <!-- Sidebar for alignment (Order Summary/Info) -->
+                <div class="order-summary order-summary-sidebar">
+                    <h3 class="order-summary-title">Why Choose LimTray?</h3>
+                    <ul class="order-summary-list">
+                        <li>Premium, eco-friendly pulp trays</li>
+                        <li>Flexible pricing for bulk orders</li>
+                        <li>Fast nationwide delivery</li>
+                        <li>Trusted by 200+ clients</li>
+                    </ul>
+                    <div class="order-summary-help">
+                        <strong class="order-summary-help-strong">Need help?</strong><br>
+                        <span class="order-summary-help-phone">Call <a href="tel:+639123456789" class="order-summary-help-link order-summary-help-link-css">+63 912 345 6789</a></span>
+                    </div>
+                    <a href="orders.html" class="btn btn-primary order-summary-btn">Order Online</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script>
+                function showFlexiblePriceInput() {
+                    document.getElementById('flexiblePriceSection').style.display = 'block';
+                    setPurchaseType('bundle');
+                    document.getElementById('productQty').value = 101;
+                    updatePriceDisplay();
+                    document.getElementById('flexiblePrice').focus();
+                }
+
+                function hideFlexiblePriceInput() {
+                    document.getElementById('flexiblePriceSection').style.display = 'none';
+                }
+        // ============================================
+        // EDITABLE PRICING CONFIGURATION
+        // Edit these values to change pricing
+        // ============================================
+        const PCS_PER_BUNDLE = 120;  // 1 Bundle = 120 pcs
+        const PRICE_PER_TRAY = 4.00; // Standard per-tray price
+        
+        const BUNDLE_PRICING = {
+            tier1: { min: 1, max: 50, price: 480.00 },      // 1-50 bundles: ₱480 each
+            tier2: { min: 51, max: 100, price: 450.00 },    // 51-100 bundles: ₱450 each
+            tier3: { min: 101, max: 200, price: null }      // 101-200 bundles: Flexible price
+        };
+
+        let purchaseType = 'bundle'; // 'tray' or 'bundle'
+
+        function setPurchaseType(type) {
+            purchaseType = type;
+            const btnTray = document.getElementById('btnPerTray');
+            const btnBundle = document.getElementById('btnPerBundle');
+            const traySection = document.getElementById('perTraySection');
+            const bundleSection = document.getElementById('perBundleSection');
+            const qtyLabel = document.getElementById('qtyLabel');
+            const qtyInput = document.getElementById('productQty');
+
+            if (type === 'tray') {
+                btnTray.style.border = '2px solid #1976D2';
+                btnTray.style.background = '#E3F2FD';
+                btnTray.style.color = '#1565C0';
+                btnTray.style.fontWeight = '600';
+                btnBundle.style.border = '2px solid #E0E0E0';
+                btnBundle.style.background = '#F5F5F5';
+                btnBundle.style.color = '#333';
+                btnBundle.style.fontWeight = '500';
+                traySection.style.display = 'block';
+                bundleSection.style.display = 'none';
+                qtyLabel.textContent = 'Select Quantity (Trays):';
+                qtyInput.max = 10000;
+                document.getElementById('flexiblePriceSection').style.display = 'none';
+            } else {
+                btnBundle.style.border = '2px solid #2E7D32';
+                btnBundle.style.background = '#E8F5E9';
+                btnBundle.style.color = '#2E7D32';
+                btnBundle.style.fontWeight = '600';
+                btnTray.style.border = '2px solid #E0E0E0';
+                btnTray.style.background = '#F5F5F5';
+                btnTray.style.color = '#333';
+                btnTray.style.fontWeight = '500';
+                traySection.style.display = 'none';
+                bundleSection.style.display = 'block';
+                qtyLabel.textContent = 'Select Quantity (Bundles):';
+                qtyInput.max = 200;
+            }
+            
+            // Reset quantity to 1 when switching
+            qtyInput.value = 1;
+            updatePriceDisplay();
+        }
+
+        function getBundlePrice(quantity) {
+            if (quantity >= BUNDLE_PRICING.tier3.min && quantity <= BUNDLE_PRICING.tier3.max) {
+                // Flexible price - get from input
+                return parseFloat(document.getElementById('flexiblePrice').value) || 420;
+            } else if (quantity >= BUNDLE_PRICING.tier2.min && quantity <= BUNDLE_PRICING.tier2.max) {
+                return BUNDLE_PRICING.tier2.price;
+            } else {
+                return BUNDLE_PRICING.tier1.price;
+            }
+        }
+
+        function updatePriceDisplay() {
+            const qty = parseInt(document.getElementById('productQty').value) || 1;
+            const flexibleSection = document.getElementById('flexiblePriceSection');
+            const priceBreakdown = document.getElementById('priceBreakdown');
+            
+            let unitPrice, totalPrice, breakdownText;
+
+            if (purchaseType === 'tray') {
+                unitPrice = PRICE_PER_TRAY;
+                totalPrice = unitPrice * qty;
+                breakdownText = `(₱${unitPrice.toFixed(2)} × ${qty} ${qty > 1 ? 'trays' : 'tray'})`;
+                flexibleSection.style.display = 'none';
+            } else {
+                // Bundle pricing
+                if (qty >= 101 && qty <= 200) {
+                    flexibleSection.style.display = 'block';
+                } else {
+                    flexibleSection.style.display = 'none';
+                }
+                
+                unitPrice = getBundlePrice(qty);
+                totalPrice = unitPrice * qty;
+                const totalPcs = qty * PCS_PER_BUNDLE;
+                breakdownText = `(₱${unitPrice.toFixed(2)} × ${qty} ${qty > 1 ? 'bundles' : 'bundle'} = ${totalPcs.toLocaleString()} pcs)`;
+            }
+            
+            document.getElementById('totalPrice').textContent = totalPrice.toFixed(2);
+            priceBreakdown.textContent = breakdownText;
+        }
+
+        function increaseQty() {
+            const input = document.getElementById('productQty');
+            let qty = parseInt(input.value) || 1;
+            const maxQty = purchaseType === 'tray' ? 10000 : 200;
+            if (qty < maxQty) {
+                input.value = qty + 1;
+                updatePriceDisplay();
+            }
+        }
+
+        function decreaseQty() {
+            const input = document.getElementById('productQty');
+            let qty = parseInt(input.value) || 1;
+            if (qty > 1) {
+                input.value = qty - 1;
+                updatePriceDisplay();
+            }
+        }
+
+        function addToCartWithQty() {
+            const qty = parseInt(document.getElementById('productQty').value) || 1;
+            let unitPrice, productName, productId;
+
+            if (purchaseType === 'tray') {
+                unitPrice = PRICE_PER_TRAY;
+                productName = '30-Cell Egg Tray';
+                productId = '30cell-egg-tray';
+            } else {
+                unitPrice = getBundlePrice(qty);
+                productName = '30-Cell Egg Tray Bundle (120 pcs)';
+                productId = '30cell-egg-tray-bundle';
+            }
+            
+            const product = {
+                id: productId,
+                name: productName,
+                price: unitPrice,
+                quantity: qty,
+                type: purchaseType,
+                pcsPerBundle: purchaseType === 'bundle' ? PCS_PER_BUNDLE : 1
+            };
+            
+            // Get existing cart
+            let cart = JSON.parse(localStorage.getItem('limtray_cart')) || [];
+            
+            // Check if product exists with same price tier and type
+            const existingItem = cart.find(item => item.id === product.id && item.price === product.price && item.type === product.type);
+            
+            if (existingItem) {
+                existingItem.quantity += product.quantity;
+            } else {
+                cart.push(product);
+            }
+            
+            localStorage.setItem('limtray_cart', JSON.stringify(cart));
+            updateCartCount();
+            
+            const unitLabel = purchaseType === 'tray' ? 'tray' : 'bundle';
+            showNotification(`Added ${qty} ${unitLabel}(s) to cart at ₱${unitPrice.toFixed(2)}/${unitLabel}!`, 'success');
+        }
+
+        // Update price when quantity input changes
+        document.getElementById('productQty').addEventListener('input', updatePriceDisplay);
+        document.getElementById('productQty').addEventListener('change', updatePriceDisplay);
+    </script>
+
+    <!-- Bulk Order CTA -->
+    <section class="cta-section">
+        <div class="container">
+            <div class="cta-content">
+                <h2>Need a Bulk Order?</h2>
+                <p>Get special discounts for orders of 1,000+ trays. Contact us for custom quotes!</p>
+                <div class="cta-buttons">
+                    <a href="orders.html" class="btn btn-primary">Place Bulk Order</a>
+                    <a href="contact.html" class="btn btn-secondary">Request Quote</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <h3>About LimTray</h3>
+                    <p>Leading manufacturer of eco-friendly egg trays and packaging solutions in the Philippines. Owned and operated by Joan Lim since 2010.</p>
+                    <div class="social-links">
+                        <a href="#" title="Facebook"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" title="Twitter"><i class="fab fa-twitter"></i></a>
+                        <a href="#" title="Instagram"><i class="fab fa-instagram"></i></a>
+                        <a href="#" title="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+                <div class="footer-col">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="products.html">Products</a></li>
+                        <li><a href="orders.html">Order Online</a></li>
+                        <li><a href="logistics.html">Logistics & Delivery</a></li>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h3>Customer Service</h3>
+                    <ul>
+                        <li><a href="faq.html">FAQs</a></li>
+                        <li><a href="shipping.html">Shipping Policy</a></li>
+                        <li><a href="returns.html">Returns & Refunds</a></li>
+                        <li><a href="terms.html">Terms & Conditions</a></li>
+                        <li><a href="privacy.html">Privacy Policy</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h3>Contact Info</h3>
+                    <ul class="contact-info">
+                        <li><i class="fas fa-map-marker-alt"></i> 123 Industrial Ave, Quezon City, Philippines</li>
+                        <li><i class="fas fa-phone"></i> +63 912 345 6789</li>
+                        <li><i class="fas fa-envelope"></i> info@limtray.com</li>
+                        <li><i class="fas fa-clock"></i> Mon-Sat: 8:00 AM - 6:00 PM</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 Ecopulp Packaging Supplies. All Rights Reserved. | Owned by Joan Lim</p>
+                <div class="payment-methods">
+                    <span>Payment Methods:</span>
+                    <i class="fab fa-cc-visa"></i>
+                    <i class="fab fa-cc-mastercard"></i>
+                    <i class="fab fa-paypal"></i>
+                    <i class="fas fa-money-bill-wave"></i>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+</body>
+</html>
